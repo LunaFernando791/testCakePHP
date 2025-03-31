@@ -28,8 +28,6 @@ $cakeDescription = $this->fetch('title');
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->script('bootstrap.bundle.min,js') ?>
-
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>

@@ -1,7 +1,26 @@
-<?= $this->Form->create()?>
-<?= $this->Form->control('username', ['required' => true,'placeholder' => 'Username', 'label' => 'Username', 'class' => 'form-control'])?>
-<?= $this->Form->control('password', ['class' => 'form-control'])?>
-<?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']);?>
-<?= $this->Form->end()?>
 
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Login</h2>
+                </div>
+                <div class="card-body">
+                    <?= $this->Form->create()?>
+                    <?= $this->Form->control('username', ['required' => true,'placeholder' => 'Username', 'label' => 'Username', 'class' => 'form-control'])?>
+                    <br>
+                    <?= $this->Form->control('password', ['type' => 'password','autocomplete' => 'off','required' => true,'placeholder' => 'Password', 'label' => 'Password', 'class' => 'form-control'])?>
+                </div>
+                <br>
+                <div class="text-center">
+                <?= $this->Form->button(__('Login'),['class'=>'btn btn-primary']);?>
+                <br>
+                </div>
+                <?= $this->Form->end()?>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
 
