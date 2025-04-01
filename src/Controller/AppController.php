@@ -43,6 +43,7 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth',[
+            'authorize' => ['Controller'], // Añadir esta línea para habilitar la autorización
             'loginRedirect' => [
                 'controller' => 'Panel',
                 'action' => 'index'
@@ -56,11 +57,12 @@ class AppController extends Controller
                     'fields' => [
                         'username' => 'username',
                         'password' => 'password'
-                    ]
+                    ],
+                    'finder' => 'auth' // Habilitar la autenticación con el finder 'auth' para el modelo 'Users'
                 ]
             ],
             'storage' => 'Session',
-           'unauthorizedRedirect' => $this->referer()
+            'unauthorizedRedirect' => $this->referer()
         ]);
         /*
          * Enable the following component for recommended CakePHP security settings.
@@ -68,8 +70,24 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
-    public function beforeFilter(Event $event)
+    
+    public function beforeFilter(Event $event) // Añadir esta función para establecer la variable 'authUser' en todas las vistas
     {
-        $this->Auth->allow(['login', 'logout', 'add']);
+        $this->set('authUser', $this->Auth->user());
+        $this->Auth->allow(['login', 'add']);
+    }
+    
+   public function isAuthorized($user) // Añadir esta función para la autorización, que comprueba si el usuario tiene permisos para acceder a una acción
+    {
+        // Todos los usuarios pueden acceder a las acciones 'index' y 'view'
+        if ($this->request->getParam('action') === 'index' || $this->request->getParam('action') === 'view' || $this->request->getParam('action') === 'logout') {
+            return true;
+        }
+        // Solo los usuarios con rol 'admin' pueden acceder a las acciones 'add', 'edit' y 'delete'
+        if ($user['is_admin'] === true) {
+            return true;
+        }
+        // Por defecto, denegar el acceso
+        return false;
     }
 }
