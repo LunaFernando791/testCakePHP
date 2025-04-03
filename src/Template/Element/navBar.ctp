@@ -12,13 +12,7 @@
                 echo $this->Html->link(__('Home'), ['controller' => 'Panel', 'action' => 'index'], ['class' => 'nav-link active']);
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo $this->Html->link(__('Posts'), ['controller' => 'Posts', 'action' => 'index'], ['class' => 'nav-link active']);
-                echo '</li>';
-                echo '<li class="nav-item">';
-                echo $this->Html->link(__('Categories'), ['controller' => 'Categories', 'action' => 'index'], ['class' => 'nav-link active']);
-                echo '</li>';
-                echo '<li class="nav-item">';
-                echo $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'nav-link active']);
+                echo $this->Html->link(__('Proyectos'), ['controller' => 'Proyectos', 'action' => 'index'], ['class' => 'nav-link active']);
                 echo '</li>';
                 };
             ?>
@@ -35,10 +29,9 @@
             }
            ?>
         </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <?php if ($this->request->getSession()->read('Auth.User')): ?>
+            <?= $this->Html->link(__('Cerrar Sesion'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'btn btn-danger'])?>
+        <?php endif;?>
         </div>
         </div>
     </nav>

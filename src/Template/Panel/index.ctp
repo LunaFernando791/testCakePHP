@@ -2,5 +2,5 @@
 	<?php echo $title; ?>
 </h2>
 
-<h3>Welcome <?= $authUser['username'];?></h3>
+<h3>Welcome <?= $authUser['nombre'];?></h3>
 <?= $this->Html->link('Logout', ['controller' => 'Users', 'action' => 'logout', ], ['class' => 'btn btn-danger']); ?>

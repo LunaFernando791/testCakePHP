@@ -34,11 +34,27 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('email');
+        $this->setDisplayField('nombre');
         $this->setPrimaryKey('id');
+
 
         $this->addBehavior('Timestamp');
         $this->setEntityClass('App\Model\Entity\User');
+        $this->hasMany('Proyectos', [
+            'foreignKey' => 'id_usuario_lider',
+        ]);
+        $this->hasMany('Tareas', [
+            'foreignKey' => 'id_usuario',
+        ]);
+        $this->hasMany('Comentarios', [
+            'foreignKey' => 'id_usuario',
+        ]);
+        $this->hasMany('Archivos', [
+            'foreignKey' => 'id_usuario',
+        ]);
+        $this->hasMany('Notificaciones', [
+            'foreignKey' => 'id_usuario',
+        ]);
     }
 
     /**
@@ -53,6 +69,12 @@ class UsersTable extends Table
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
 
+        $validator
+            ->scalar('nombre')
+            ->maxLength('nombre', 255)
+            ->requirePresence('nombre', 'create')
+            ->notEmptyString('nombre');
+            
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
@@ -85,7 +107,7 @@ class UsersTable extends Table
     public function findAuth(\Cake\ORM\Query $query, array $options)
     {
         $query
-            ->select(['id', 'username', 'email', 'password', 'is_admin','active'])
+            ->select(['id', 'nombre', 'email', 'password', 'rol','active'])
             ->where(['Users.active' => 1]);
         return $query;
     }

@@ -13,11 +13,11 @@
                 </div>
                 <div class="card-body">
                     <?= $this->Form->create($user)?>
-                        <?= $this->Form->control(__('username'), ['type' => 'text','required' => true,'placeholder' => 'Username', 'label' => 'Username', 'autofocus' => true, 'autocomplete' => 'username', 'class' => 'form-control']); ?>
+                        <?= $this->Form->control('nombre', ['type' => 'text','required' => true,'placeholder' => 'Nombre', 'label' => __('Nombre'), 'autofocus' => true, 'autocomplete' => 'nombre', 'class' => 'form-control']); ?>
                         <br>
-                        <?= $this->Form->control(__('email'), ['type' => 'email','required' => true,'placeholder' => 'Email', 'label' => 'Email', 'autofocus' => true, 'autocomplete' => 'email', 'class' => 'form-control']); ?>
+                        <?= $this->Form->control('email', ['type' => 'email','required' => true,'placeholder' => 'Email', 'label' => __('Email'), 'autofocus' => true, 'autocomplete' => 'email', 'class' => 'form-control']); ?>
                         <br>
-                        <?= $this->Form->control(__('password'), ['type' => 'password','required' => true,'placeholder' => 'Password', 'label' => 'Password', 'class' => 'form-control']); ?>
+                        <?= $this->Form->control('password', ['type' => 'password','required' => true,'placeholder' => 'Password', 'label' => __('Password'), 'class' => 'form-control']); ?>
                         <br>
                         <div class="text-center">
                             <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login'])?>">Already have an account?</a>

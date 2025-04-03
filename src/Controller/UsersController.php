@@ -23,7 +23,7 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Usuario o contraseña incorrecta'));
+            $this->Flash->error(__('Email o contraseña incorrecta'));
         }
     }
     public function logout()

@@ -43,7 +43,7 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth',[
-            'authorize' => ['Controller'], // Añadir esta línea para habilitar la autorización
+            'authorize' => ['Controller'], 
             'loginRedirect' => [
                 'controller' => 'Panel',
                 'action' => 'index'
@@ -55,10 +55,10 @@ class AppController extends Controller
             'authenticate' => [
                 'Form' => [
                     'fields' => [
-                        'username' => 'username',
+                        'username' => 'email', // Cambiado de 'email' => 'email' a 'username' => 'email'
                         'password' => 'password'
                     ],
-                    'finder' => 'auth' // Habilitar la autenticación con el finder 'auth' para el modelo 'Users'
+                    'finder' => 'auth'
                 ]
             ],
             'storage' => 'Session',
@@ -84,7 +84,7 @@ class AppController extends Controller
             return true;
         }
         // Solo los usuarios con rol 'admin' pueden acceder a las acciones 'add', 'edit' y 'delete'
-        if ($user['is_admin'] === true) {
+        if ($user['rol'] === 'administrador') {
             return true;
         }
         // Por defecto, denegar el acceso

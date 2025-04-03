@@ -8,7 +8,7 @@
                 </div>
                 <div class="card-body">
                     <?= $this->Form->create()?>
-                    <?= $this->Form->control('username', ['required' => true,'placeholder' => 'Username', 'label' => 'Username', 'class' => 'form-control'])?>
+                    <?= $this->Form->control('email', ['required' => true,'placeholder' => 'Email', 'label' => 'Email', 'class' => 'form-control'])?>
                     <br>
                     <?= $this->Form->control('password', ['type' => 'password','autocomplete' => 'off','required' => true,'placeholder' => 'Password', 'label' => 'Password', 'class' => 'form-control'])?>
                 </div>
