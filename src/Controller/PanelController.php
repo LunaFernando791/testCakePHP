@@ -21,5 +21,17 @@ class PanelController extends AppController
     {
         // Aquí puedes agregar la lógica para cargar datos necesarios para el panel
         $this->set('title', 'Panel Principal');
+        $this->loadModel('Proyectos');
+        $recentProjects = $this->Proyectos->find('all', [
+            'order' => ['Proyectos.id' => 'DESC'],
+            'limit' => 5,
+        ]);
+        $this->loadModel('Tareas');
+        $recentTasks = $this->Tareas->find('all', [
+            'order' => ['Tareas.id' => 'DESC'],
+            'limit' => 5,
+        ]);
+        $this->set(compact('recentProjects', 'recentTasks'));
+       
     }
 }

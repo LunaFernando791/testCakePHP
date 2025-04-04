@@ -1,0 +1,60 @@
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Comoestas', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Amigo', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien, gracias.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Amigo', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien, gracias.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('¿Como estas?', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => No entiendo la pregunta.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Como estas', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Como estas', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Que hora es', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Lo siento, no sé la hora.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Que hora es', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Lo siento, no sé la hora.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Que hora es', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Lo siento, no sé la hora.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\respuestas.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => ¡Hola, cómo estás!
+)
+

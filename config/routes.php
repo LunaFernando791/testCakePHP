@@ -50,7 +50,6 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
         'httpOnly' => true,
     ]));
-
     /*
      * Apply a middleware to the current route scope.
      * Requires middleware to be registered through `Application::routes()` with `registerMiddleware()`
