@@ -13,7 +13,6 @@ class UsersController extends AppController
     }
     public function login()
     {
-        
         if($this->Auth->user()) { /* CONTROLADOR DESDE AUTH REDIRIGE AL INDEX EN LA RUTA LOGIN */
             return $this->redirect(['controller' => 'Panel', 'action' => 'index']);
         }

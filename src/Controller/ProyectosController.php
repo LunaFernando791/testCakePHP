@@ -55,6 +55,8 @@ class ProyectosController extends AppController
      */
     public function add()
     {
+        $this->loadModel('Users');
+        $users = $this->Users->find('list', ['limit' => 200]);
         $proyecto = $this->Proyectos->newEntity();
         if ($this->request->is('post')) {
             $proyecto = $this->Proyectos->patchEntity($proyecto, $this->request->getData());
@@ -65,7 +67,7 @@ class ProyectosController extends AppController
             }
             $this->Flash->error(__('The proyecto could not be saved. Please, try again.'));
         }
-        $this->set(compact('proyecto'));
+        $this->set(compact('proyecto', 'users'));
     }
 
     /**
@@ -77,8 +79,10 @@ class ProyectosController extends AppController
      */
     public function edit($id = null)
     {
+        $this->loadModel('Users');
+        $users = $this->Users->find('list', ['limit' => 200]);
         $proyecto = $this->Proyectos->get($id, [
-            'contain' => ['Users'],
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $proyecto = $this->Proyectos->patchEntity($proyecto, $this->request->getData());
@@ -89,7 +93,7 @@ class ProyectosController extends AppController
             }
             $this->Flash->error(__('The proyecto could not be saved. Please, try again.'));
         }
-        $this->set(compact('proyecto'));
+        $this->set(compact('proyecto', 'users'));
     }
 
     /**

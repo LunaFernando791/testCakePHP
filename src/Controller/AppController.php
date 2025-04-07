@@ -64,6 +64,7 @@ class AppController extends Controller
             'storage' => 'Session',
             'unauthorizedRedirect' => $this->referer()
         ]);
+        
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3/en/controllers/components/security.html
