@@ -38,7 +38,7 @@ $cakeDescription = $this->fetch('title');
     <?= $this->element('navbar')?>
     <?= $this->Flash->render() ?>
     
-    <div class="container clearfix">
+    <div class="container-fluid mt-3">
         <?= $this->fetch('content') ?>
     </div>
     <footer>

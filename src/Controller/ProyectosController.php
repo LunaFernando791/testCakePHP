@@ -35,9 +35,9 @@ class ProyectosController extends AppController
     public function view($id = null)
     {
         $proyecto = $this->Proyectos->get($id, [
-            'contain' => ['Users'],
+            'contain' => ['Users', 'Tareas' => ['UsuarioAsignado']],
         ]);
-        $this->set('proyecto', $proyecto);
+        $this->set(compact('proyecto'));
     }
     public function tareas($id = null)
     {

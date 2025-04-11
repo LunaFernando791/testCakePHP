@@ -61,6 +61,17 @@ class TareasController extends AppController
         }
         $this->set(compact('tarea'));
     }
+    public function updateEstado()
+    {
+        $this->request->allowMethod(['post', 'put']);
+        $tarea = $this->Tareas->get($this->request->getData('id'));
+        $tarea->estado = $this->request->getData('estado');
+        if ($this->Tareas->save($tarea)) {
+            $this->Flash->success(__('The tarea has been saved.'));
+            return $this->redirect(['action' => 'index']);  
+        }
+    }
+
 
     /**
      * Edit method
@@ -85,7 +96,6 @@ class TareasController extends AppController
         }
         $this->set(compact('tarea'));
     }
-
     /**
      * Delete method
      *

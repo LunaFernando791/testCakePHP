@@ -37,8 +37,14 @@ class TareasTable extends Table
             'foreignKey' => 'id_proyecto'
         ]);
         $this->belongsTo('Users', [
+            'className' => 'Users',
             'foreignKey' => 'id_usuario_asignado'
         ]);
+        $this->belongsTo('UsuarioAsignado', [
+            'className' => 'Users',
+            'foreignKey' => 'id_usuario_asignado'
+        ]);
+        
     }
 
     /**
