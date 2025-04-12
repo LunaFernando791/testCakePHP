@@ -12,26 +12,27 @@ use Cake\Event\EventInterface;
  */
 class PanelController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
+    
     public function index()
     {
         // Aquí puedes agregar la lógica para cargar datos necesarios para el panel
+        $session = $this->request->getSession();
+        $userData = $session->read('Auth.User');
         $this->set('title', 'Panel Principal');
         $this->loadModel('Proyectos');
         $recentProjects = $this->Proyectos->find('all', [
+            'contain' => ['Users'],
+            'conditions' => ['Proyectos.id_usuario_lider' => $userData['id']],
             'order' => ['Proyectos.id' => 'DESC'],
             'limit' => 5,
         ]);
         $this->loadModel('Tareas');
         $recentTasks = $this->Tareas->find('all', [
+            'contain' => ['Users'],
+            'conditions' => ['Tareas.id_usuario_asignado' => $userData['id']],
             'order' => ['Tareas.id' => 'DESC'],
             'limit' => 5,
         ]);
-        $this->set(compact('recentProjects', 'recentTasks'));
-       
+        $this->set(compact('recentProjects', 'recentTasks', 'userData'));
     }
 }

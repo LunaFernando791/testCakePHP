@@ -4,29 +4,67 @@
  * @var \App\Model\Entity\Proyecto $proyecto
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Proyectos'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="proyectos form content">
-            <?= $this->Form->create($proyecto) ?>
-            <fieldset>
-                <legend><?= __('Add Proyecto')?></legend>
-                <?php
-                    echo $this->Form->control('nombre');
-                    echo $this->Form->control('descripcion');
-                    echo $this->Form->control('fecha_inicio');
-                    echo $this->Form->control('fecha_fin');
-                    echo $this->Form->control('estado');
-                    echo $this->Form->control('id_usuario_lider');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit'))?>
-            <?= $this->Form->end()?>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Editar Proyecto</h2>
+                </div>
+                <div class="card-body">
+                    <?= $this->Form->create($proyecto) ?>
+                    <div class="form-group">
+                        <?= $this->Form->control('nombre', ['class' => 'form-control'])?>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <?= $this->Form->control('descripcion', ['class' => 'form-control'])?>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <?= $this->Form->label('fecha_inicio', 'Fecha de inicio') ?>
+                        <div class="input-group date">
+                            <?= $this->Form->control('fecha_inicio', [
+                                'type' => 'date',
+                                'class' => 'form-control datepicker',
+                                'label' => false,
+                                'templates' => [
+                                    'inputContainer' => '{{content}}'
+                                ]
+                            ])?>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">    
+                        <?= $this->Form->label('fecha_fin', 'Fecha de finalización') ?>
+                        <div class="input-group date">
+                            <?= $this->Form->control('fecha_fin', [
+                                'type' => 'date',
+                                'class' => 'form-control datepicker',
+                                'label' => false,
+                                'templates' => [
+                                    'inputContainer' => '{{content}}'
+                                ]
+                            ])?>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <?= $this->Form->control('id_usuario_lider', ['options' => $users, 'class' => 'form-control'])?>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <?= $this->Form->button('Guardar', ['class' => 'btn btn-primary'])?>
+                    </div>
+                    <?= $this->Form->end()?>
+                </div>
+            </div>
         </div>
     </div>
-</div>  
+</div>

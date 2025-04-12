@@ -56,7 +56,6 @@ class UsersTable extends Table
             'foreignKey' => 'id_usuario',
         ]);
     }
-
     /**
      * Default validation rules.
      *
@@ -70,22 +69,96 @@ class UsersTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->scalar('nombre')
-            ->maxLength('nombre', 255)
+            ->notEmptyString('nombre')
             ->requirePresence('nombre', 'create')
-            ->notEmptyString('nombre');
+            ->add('nombre',
+                'length',
+                [
+                    'rule' => ['minLength', 3],
+                    'message' => 'El nombre debe tener al menos 3 caracteres',
+                ]
+            )
+            ->add('nombre', 'lettersOnly',
+                [
+                    'rule' => 'alphaNumeric',
+                   'message' => 'El nombre solo puede contener letras y números',
+                ]
+            )
+            ->add('nombre', 'spam', [
+                    'rule' => function ($value) {
+                        return stripos($value, 'spam') === false;
+                    },
+                    'message' => 'No se permite contenido spam'
+                ]
+            )
+            ->add('nombre', 'noScriptTags',[
+                'rule' => function ($value) {
+                    return stripos($value, '<script') === false;
+                },
+                'message' => 'No se permiten etiquetas de script',
+            ]);
+
             
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
             ->notEmptyString('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->requirePresence('email')
+            ->add('email', 'validFormat', [
+                'rule' => 'email',
+                'message' => 'El correo electrónico no es válido',
+            ])
+            ->add('email', 'unique', [
+                'rule' => 'validateUnique',
+               'provider' => 'table',
+                'message' => 'Este correo electrónico ya está en uso',
+            ])
+            ->add('email', 'spam', [
+                'rule' => function ($value) {
+                    return stripos($value,'spam') === false;
+                },
+               'message' => 'No se permite contenido spam'
+            ]);
 
         $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
+            ->notEmptyString('password')
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->add('password', 'length', [
+                'rule' => ['minLength', 8],
+                'message' => 'La contraseña debe tener al menos 8 caracteres',
+            ])
+            ->add('password', 'complexity', [
+                'rule' => function ($value) {
+                    // Log para depuración
+                    file_put_contents(
+                        'c:\xampp\htdocs\testProject\testCakePHP\logs\password_validation.log', 
+                        "Validando: " . $value . " - Resultado: " . 
+                        (preg_match('/[A-Z]/', $value) && 
+                         preg_match('/[a-z]/', $value) && 
+                         preg_match('/[0-9]/', $value) ? 'PASS' : 'FAIL') . "\n", 
+                        FILE_APPEND
+                    );
+                    
+                    return (preg_match('/[A-Z]/', $value) && 
+                            preg_match('/[a-z]/', $value) && 
+                            preg_match('/[0-9]/', $value));
+                },
+                'message' => 'La contraseña debe tener al menos una letra mayúscula, una letra minúscula y un número',
+            ])
+            ->add('password', 'spam', [
+                'rule' => function ($value) {
+                    return stripos($value,'spam') === false;
+                },
+                'message' => 'No se permite contenido spam'
+            ]);
+
+        $validator
+            ->requirePresence('confirm_password', 'create')
+            ->notEmptyString('confirm_password')
+            ->add('confirm_password', 'custom', [
+                'rule' => function ($value, $context) {
+                    return isset($context['data']['password']) && $value === $context['data']['password'];
+                },
+                'message' => 'Las contraseñas no coinciden',
+            ]);
 
         return $validator;
     }
