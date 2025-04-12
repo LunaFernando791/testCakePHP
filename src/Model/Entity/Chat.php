@@ -26,6 +26,6 @@ class Chat extends Entity
         'entrada' => true,
         'respuesta' => true,
         'hora_entrada' => true,
-        'hora_salida' => true,
+        'id_user' => true,
     ];
 }

@@ -40,5 +40,6 @@ $cakeDescription = $this->fetch('title');
     </div>
     <footer>
     </footer>
+    <?= $this->Html->script('darkmode') ?>
 </body>
 </html>

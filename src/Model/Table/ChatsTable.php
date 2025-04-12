@@ -31,6 +31,16 @@ class ChatsTable extends Table
         parent::initialize($config);
 
         $this->setTable('chats');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
+
+        $this->belongsTo(
+            'Users',
+            [
+                'foreignKey' => 'id_user',
+                'joinType' => 'INNER'
+            ]
+        );
     }
 
     /**

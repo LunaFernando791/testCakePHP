@@ -58,3 +58,244 @@ Código: 0, Salida: Array
     [0] => ¡Hola, cómo estás!
 )
 
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Cual es tu nombre', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl-win.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Cual es tu nombre', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Cual es tu nombre', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Mi nombre es BrainMed
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => ¡Hola! ¿En qué puedo ayudarte?
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Cual es tu nombre', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Mi nombre es BrainMed
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Cual es tu nombre', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Mi nombre es BrainMed
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Como estas', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien, gracias.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Cual es tu nombre', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Mi nombre es BrainMed
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => ¡Hola! ¿En qué puedo ayudarte?
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Como estas', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien, gracias.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => ¡Hola! ¿En qué puedo ayudarte?
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Hola', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => ¡Hola! ¿En qué puedo ayudarte?
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Como estas', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien, gracias.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Como estas', R), write(R), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Estoy bien, gracias.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Tengo los siguientes síntomas: congestion nasal, tos, fiebre', R), write(R), nl." -t halt
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('Tengo los siguientes síntomas: fiebre, tos, congestion nasal', R), write(R), nl." -t halt
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "responder('fiebre, tos', R), write(R), nl." -t halt
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([fiebre, tos], Enfermedad) -> write('Basado en tus síntomas, podrías tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus s�ntomas, podr�as tener: gripe
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([fiebre, tos, congestion_nasal], Enfermedad) -> write('Basado en tus síntomas, podrías tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus s�ntomas, podr�as tener: gripe
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([fiebre], Enfermedad) -> write('Basado en tus síntomas, podrías tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus s�ntomas, podr�as tener: gripe
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([fiebre], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: gripe
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: gripe
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([fiebre, tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: gripe
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([fiebre, tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([congestion_nasal], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: gripe
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([congestion_nasal, dolor_de_garganta], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: resfriado comun
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([congestion_nasal, dolor_de_garganta], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: resfriado comun
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
