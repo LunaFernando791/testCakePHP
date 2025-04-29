@@ -19,7 +19,6 @@ class ChatsController extends AppController
             'conditions' => ['id_user' => $userId],
             'order' => ['hora_entrada' => 'ASC']
         ]);
-
         if ($this->request->is('post')) {
             // Obtener la entrada del usuario
             $entrada = $this->request->getData('entrada');
@@ -41,4 +40,5 @@ class ChatsController extends AppController
         // Pasar todos los chats a la vista
         $this->set(compact('chats'));
     }
+    
 }

@@ -61,7 +61,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Panel', 'action' => 'index', 'home']);
+    $routes->connect('/', ['controller' => 'Chats', 'action' => 'index', 'home']);
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
     $routes->connect('/add', ['controller' => 'Users', 'action' => 'add']);

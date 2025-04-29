@@ -1,11 +1,10 @@
 
 <body>
     <div class="container w-100">
-        <h2 class="text-center">BrainMed</h2>
         <div class="card">
             <div class="card-body">
                 <!-- En la sección de chat-box -->
-                <div class="chat-box mb-3" style="max-height: 350px; overflow-y: auto;">
+                <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;">
                     <!-- Mostrar mensajes anteriores -->
                     <?php if (!empty($chats) && $chats->count() > 0): ?>
                         <?php foreach ($chats as $chat): ?>
@@ -40,7 +39,7 @@
                     <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.25rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
                     <div class="input-group">
                         <input type="hidden" name="entrada" id="entrada-hidden" required>
-                        <div class="dropdown">
+                        <div class="dropdown ms-2">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="symptomDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 Seleccionar síntomas
                             </button>
@@ -53,6 +52,26 @@
                                 <li><a class="dropdown-item" href="#" data-symptom="dolor de garganta">Dolor de garganta</a></li>
                                 <li><a class="dropdown-item" href="#" data-symptom="fatiga">Fatiga</a></li>
                                 <li><a class="dropdown-item" href="#" data-symptom="dificultad para respirar">Dificultad para respirar</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="dolor de pecho">Mialgias(Dolor Muscular)</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="fatiga">Fatiga</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="sudoracion">Sudoración</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="vomito">Vómito</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="nauseas">Náuseas</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="diarrea">Diarrea</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="comezon">Comezón</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="escalofrios">Escalofríos</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="perdida apetito">Pérdida del apetito</a></li>
+                            </ul>
+                        </div>
+                        <div class="ms-2">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="estacionDropdow" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                Selecciona la estación actual
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="estacionDropdow">
+                                <li><a class="dropdown-item" href="#" data-symptom="verano">Verano</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="invierno">Invierno</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="otoño">Otoño</a></li>
+                                <li><a class="dropdown-item" href="#" data-symptom="primavera">Primavera</a></li>
                             </ul>
                         </div>
                         <button type="submit" class="btn btn-primary ms-2" id="submit-btn" disabled>Enviar</button>
@@ -73,9 +92,7 @@
         const selectedSymptomsContainer = document.querySelector('.selected-symptoms');
         const hiddenInput = document.getElementById('entrada-hidden');
         const submitBtn = document.getElementById('submit-btn');
-
         let selectedSymptoms = [];
-
         // Función para actualizar el input oculto y el botón de envío
         function updateHiddenInput() {
             hiddenInput.value = selectedSymptoms.length > 0 ?
@@ -113,13 +130,11 @@
                     renderSymptomTags();
                     updateHiddenInput();
                 });
-
                 tag.appendChild(text);
                 tag.appendChild(removeBtn);
                 selectedSymptomsContainer.appendChild(tag);
             });
         }
-
         // Agregar event listeners a los elementos del dropdown
         dropdownItems.forEach(item => {
             item.addEventListener('click', function(e) {
