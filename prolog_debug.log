@@ -299,3 +299,27 @@ Código: 0, Salida: Array
     [0] => Basado en tus sintomas, podrias tener: influenza
 )
 
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, fiebre, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([congestion_nasal, tos, dolor_de_cabeza], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: asma
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([dolor_de_cabeza, dolor_muscular, fiebre], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: influenza
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(diagnostico([tos, congestion_nasal], Enfermedad) -> write('Basado en tus sintomas, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas, podrias tener: gripe
+)
+
