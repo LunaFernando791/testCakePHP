@@ -36,121 +36,225 @@
                 </div>
 
                 <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'class' => 'd-flex flex-column']) ?>
-                    <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.25rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
-                    <div class="input-group">
-                        <input type="hidden" name="entrada" id="entrada-hidden" required>
-                        <div class="dropdown ms-2">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="symptomDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Seleccionar síntomas
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="symptomDropdown">
-                                <li><a class="dropdown-item" href="#" data-symptom="fiebre">Fiebre</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="tos">Tos</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="dolor de cabeza">Dolor de cabeza</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="congestion nasal">Congestión nasal</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="dolor muscular">Dolor muscular</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="dolor de garganta">Dolor de garganta</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="fatiga">Fatiga</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="dificultad para respirar">Dificultad para respirar</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="dolor de pecho">Mialgias(Dolor Muscular)</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="fatiga">Fatiga</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="sudoracion">Sudoración</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="vomito">Vómito</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="nauseas">Náuseas</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="diarrea">Diarrea</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="comezon">Comezón</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="escalofrios">Escalofríos</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="perdida apetito">Pérdida del apetito</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms-2">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="estacionDropdow" data-bs-toggle="dropdown" aria-expanded="false"> 
-                                Selecciona la estación actual
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="estacionDropdow">
-                                <li><a class="dropdown-item" href="#" data-symptom="verano">Verano</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="invierno">Invierno</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="otoño">Otoño</a></li>
-                                <li><a class="dropdown-item" href="#" data-symptom="primavera">Primavera</a></li>
-                            </ul>
-                        </div>
-                        <button type="submit" class="btn btn-primary ms-2" id="submit-btn" disabled>Enviar</button>
-                    </div>
-                <?= $this->Form->end() ?>
+    <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.25rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
+    <div class="input-group">
+        <input type="hidden" name="entrada" id="entrada-hidden" required>
+
+        <!-- Menú de síntomas con intensidades -->
+        <div class="dropdown ms-2">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="symptomDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Seleccionar síntomas
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="symptomDropdown">
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">Fiebre</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="leve">Leve</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="moderada">Moderada</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="severa">Severa</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">Tos</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="leve">Leve</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="moderada">Moderada</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="severa">Severa</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">Fatiga</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="leve">Leve</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="moderada">Moderada</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="severa">Severa</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">Dolor de cabeza</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_cabeza" data-intensity="leve">Leve</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_cabeza" data-intensity="moderada">Moderada</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_cabeza" data-intensity="severa">Severa</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">Dolor de garganta</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_garganta" data-intensity="leve">Leve</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_garganta" data-intensity="moderada">Moderada</a></li>
+                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_garganta" data-intensity="severa">Severa</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Agrega más síntomas aquí si lo deseas -->
+            </ul>
+        </div>
+
+        <!-- Menú de estaciones -->
+        <div class="dropdown ms-2">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="seasonDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Seleccionar estación
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="seasonDropdown">
+                <li><a class="dropdown-item season-option" href="#" data-season="invierno">Invierno</a></li>
+                <li><a class="dropdown-item season-option" href="#" data-season="otoño">Otoño</a></li>
+                <li><a class="dropdown-item season-option" href="#" data-season="primavera">Primavera</a></li>
+                <li><a class="dropdown-item season-option" href="#" data-season="verano">Verano</a></li>
+            </ul>
+        </div>
+
+        <button type="submit" class="btn btn-primary ms-2" id="submit-btn" disabled>Enviar</button>
+    </div>
+<?= $this->Form->end() ?>
+
             </div>
         </div>
     </div>
     <?= $this->Html->script('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js') ?>
 </body>
+<style>
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    display: none;
+    position: absolute;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+</style>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const chatBox = document.querySelector('.chat-box');
-        chatBox.scrollTop = chatBox.scrollHeight;
+document.addEventListener("DOMContentLoaded", function () {
+    const chatBox = document.querySelector('.chat-box');
+    if (chatBox) chatBox.scrollTop = chatBox.scrollHeight;
 
-        // Sistema de selección de síntomas
-        const dropdownItems = document.querySelectorAll('.dropdown-item');
-        const selectedSymptomsContainer = document.querySelector('.selected-symptoms');
-        const hiddenInput = document.getElementById('entrada-hidden');
-        const submitBtn = document.getElementById('submit-btn');
-        let selectedSymptoms = [];
-        // Función para actualizar el input oculto y el botón de envío
-        function updateHiddenInput() {
-            hiddenInput.value = selectedSymptoms.length > 0 ?
-                selectedSymptoms.join(', ') : '';
+    const selectedSymptomsContainer = document.querySelector('.selected-symptoms');
+    const hiddenInput = document.getElementById('entrada-hidden');
+    const submitBtn = document.getElementById('submit-btn');
+    const seasonDropdown = document.getElementById('seasonDropdown');
+    let selectedSymptoms = [];
+    let selectedSeason = '';
 
-            // Habilitar/deshabilitar botón de envío
-            submitBtn.disabled = selectedSymptoms.length === 0;
+    function updateHiddenInput() {
+        const symptomsString = selectedSymptoms.length > 0 ? selectedSymptoms.join(', ') : '';
+        const seasonString = selectedSeason ? `Estación: ${selectedSeason}` : '';
+        hiddenInput.value = symptomsString + (symptomsString && seasonString ? ', ' : '') + seasonString;
+        submitBtn.disabled = !hiddenInput.value.trim();
+        
+        // Actualizar el texto del botón de estación si hay una estación seleccionada
+        if (selectedSeason) {
+            seasonDropdown.textContent = `Estación: ${selectedSeason}`;
+            seasonDropdown.classList.add('btn-info');
+            seasonDropdown.classList.remove('btn-outline-secondary');
+        } else {
+            seasonDropdown.textContent = 'Seleccionar estación';
+            seasonDropdown.classList.remove('btn-info');
+            seasonDropdown.classList.add('btn-outline-secondary');
         }
+    }
 
-        // Función para renderizar las etiquetas de síntomas
-        function renderSymptomTags() {
-            selectedSymptomsContainer.innerHTML = '';
-
-            selectedSymptoms.forEach(symptom => {
-                const tag = document.createElement('div');
-                tag.className = 'symptom-tag';
-                tag.style.border = '1px solid #ced4da';
-                tag.style.padding = '3px 8px';
-                tag.style.borderRadius = '16px';
-                tag.style.display = 'flex';
-                tag.style.alignItems = 'center';
-                tag.style.gap = '5px';
-
-                const text = document.createElement('span');
-                text.textContent = symptom;
-
-                const removeBtn = document.createElement('span');
-                removeBtn.innerHTML = '&times;';
-                removeBtn.style.cursor = 'pointer';
-                removeBtn.style.fontWeight = 'bold';
-                removeBtn.style.marginLeft = '5px';
-
-                removeBtn.addEventListener('click', function() {
-                    selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
-                    renderSymptomTags();
-                    updateHiddenInput();
-                });
-                tag.appendChild(text);
-                tag.appendChild(removeBtn);
-                selectedSymptomsContainer.appendChild(tag);
+    function renderSymptomTags() {
+        selectedSymptomsContainer.innerHTML = '';
+    
+        // Renderizar síntomas
+        selectedSymptoms.forEach(symptom => {
+            const tag = document.createElement('div');
+            tag.className = 'symptom-tag';
+            tag.style.border = '1px solid #ced4da';
+            tag.style.padding = '3px 8px';
+            tag.style.borderRadius = '16px';
+            tag.style.display = 'flex';
+            tag.style.alignItems = 'center';
+            tag.style.gap = '5px';
+    
+            const text = document.createElement('span');
+            text.textContent = symptom;
+    
+            const removeBtn = document.createElement('span');
+            removeBtn.innerHTML = '&times;';
+            removeBtn.style.cursor = 'pointer';
+            removeBtn.style.fontWeight = 'bold';
+            removeBtn.style.marginLeft = '5px';
+    
+            removeBtn.addEventListener('click', function () {
+                selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
+                renderSymptomTags();
+                updateHiddenInput();
             });
+    
+            tag.appendChild(text);
+            tag.appendChild(removeBtn);
+            selectedSymptomsContainer.appendChild(tag);
+        });
+    
+        // Renderizar estación si está seleccionada
+        if (selectedSeason) {
+            const tag = document.createElement('div');
+            tag.className = 'season-tag';
+            tag.style.border = '1px solid #ced4da';
+            tag.style.padding = '3px 8px';
+            tag.style.borderRadius = '16px';
+            tag.style.display = 'flex';
+            tag.style.alignItems = 'center';
+            tag.style.gap = '5px';
+    
+            const text = document.createElement('span');
+            text.textContent = `${selectedSeason}`;
+    
+            const removeBtn = document.createElement('span');
+            removeBtn.innerHTML = '&times;';
+            removeBtn.style.cursor = 'pointer';
+            removeBtn.style.fontWeight = 'bold';
+            removeBtn.style.marginLeft = '5px';
+    
+            removeBtn.addEventListener('click', function () {
+                selectedSeason = '';
+                renderSymptomTags();
+                updateHiddenInput();
+            });
+    
+            tag.appendChild(text);
+            tag.appendChild(removeBtn);
+            selectedSymptomsContainer.appendChild(tag);
         }
-        // Agregar event listeners a los elementos del dropdown
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const symptom = this.getAttribute('data-symptom');
+    }
 
-                // Evitar duplicados
-                if (!selectedSymptoms.includes(symptom)) {
-                    selectedSymptoms.push(symptom);
-                    renderSymptomTags();
-                    updateHiddenInput();
-                }
-            });
+    document.querySelectorAll('.intensity-option').forEach(item => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
+            const symptom = this.getAttribute('data-symptom');
+            const intensity = this.getAttribute('data-intensity');
+            const fullSymptom = `${symptom} ${intensity}`;
+
+            if (!selectedSymptoms.includes(fullSymptom)) {
+                selectedSymptoms.push(fullSymptom);
+                renderSymptomTags();
+                updateHiddenInput();
+            }
         });
     });
+
+    // Mejorar el manejo de eventos para las opciones de estación
+    document.querySelectorAll('.season-option').forEach(item => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation(); // Evitar propagación del evento
+            selectedSeason = this.getAttribute('data-season');
+            console.log('Estación seleccionada:', selectedSeason); // Agregar para depuración
+            renderSymptomTags(); // Actualizar la visualización de las etiquetas
+            updateHiddenInput();
+        });
+    });
+});
 </script>
+
 </html>
 
 

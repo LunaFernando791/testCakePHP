@@ -624,3 +624,4 @@ Código: 0, Salida: Array
     [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,antibioticos,anticonceptivos]
 )
 
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(diagnostico([fiebre_moderada, tos_moderada, estación:_invierno], Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
