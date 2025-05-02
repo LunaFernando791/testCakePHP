@@ -625,3 +625,508 @@ Código: 0, Salida: Array
 )
 
 "C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(diagnostico([fiebre_moderada, tos_moderada, estación:_invierno], Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos baja', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos media', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos media', 'fiebre alta', 'estación: otoño'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos media', 'fiebre alta', 'estación: otoño'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos media', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos media', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos baja', 'estación: invierno'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, ) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamiento(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamiento(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamiento(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.'), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamiento(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamiento(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.'), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.'), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.'), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.'), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, invierno) -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.'), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamiento(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamiento(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor de cabeza media', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'tos baja', 'dolor de garganta media', 'oto�o'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, '') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['congestion_nasal alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['congestion_nasal alta', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor de cabeza baja', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor de cabeza baja', 'tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza media', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gripe, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos media', 'otonio'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, '') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['nauseas baja', 'vomitos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'primavera') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['nauseas alta'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'verano') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gastroenteritis, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gastroenteritis
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['nauseas alta'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'verano') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(gastroenteritis, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gastroenteritis
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado_comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado_comun
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,analgesicos(paracetamol, ibuprofeno)]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode(resfriado comun, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 2, Salida: Array
+(
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['dolor_de_cabeza baja', 'dolor_de_garganta baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('resfriado comun', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,analgesicos(paracetamol, ibuprofeno)]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos media', 'otonio'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, '') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'otonio') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('influenza', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: influenza
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,aspirina]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['tos media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'otonio') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('influenza', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: influenza
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,aspirina]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('resfriado comun', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: resfriado comun
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,analgesicos(paracetamol, ibuprofeno)]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['perdida_apetito baja', 'tos media', 'nauseas baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('gripe', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: gripe
+)
+
+Código: 0, Salida: Array
+(
+    [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,jarabe]
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'dolor_muscular alta', 'dolor_de_cabeza alta', 'dolor_de_ojos alta'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'verano') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('dengue', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: dengue
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'dolor_muscular alta', 'dolor_de_cabeza alta', 'dolor_de_ojos alta'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'verano') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('dengue', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: dengue
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('faringitis aguda', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: faringitis aguda
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('faringitis aguda', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: faringitis aguda
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('faringitis aguda', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: faringitis aguda
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('faringitis aguda', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: faringitis aguda
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre baja', 'tos baja'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\CTA-WEB-01\Documents\brainMed.pl" -g "(tratamientode('faringitis aguda', Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl." -t halt
+Código: 0, Salida: Array
+(
+    [0] => Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: faringitis aguda
+)
+
+Código: 0, Salida: Array
+(
+    [0] => No puedo proporcionar un tratamiento para esa enfermedad.
+)
+
