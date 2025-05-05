@@ -40,12 +40,13 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
+        $this->loadComponent('Csrf');
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth',[
             'authorize' => ['Controller'], 
             'loginRedirect' => [
-                'controller' => 'Chats',
+                'controller' => 'Users',
                 'action' => 'index'
             ],
             'logoutRedirect' => [
@@ -60,8 +61,7 @@ class AppController extends Controller
                     ],
                     'finder' => 'auth'
                 ]
-            ],
-            'storage' => 'Session',
+                ],
             'unauthorizedRedirect' => $this->referer()
         ]);
         

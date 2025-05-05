@@ -11,6 +11,13 @@ use App\Controller\AppController;
  */
 class ChatsController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        // Activa CSRF solo para las acciones del controlador Chats
+        $this->getEventManager()->on($this->Csrf);
+    }
     public function index()
     {
         // Obtener todos los chats del usuario actual
@@ -40,5 +47,44 @@ class ChatsController extends AppController
         // Pasar todos los chats a la vista
         $this->set(compact('chats'));
     }
-    
+    public function ajaxResponder()
+    {
+        $this->request->allowMethod(['ajax', 'post']);
+        $this->autoRender = false;
+
+        $userId = $this->request->getSession()->read('Auth.User.id');
+        $entrada = $this->request->getData('entrada');
+
+        // Procesar con Prolog
+        $prologService = new PrologService();
+        $respuesta = $prologService->procesarMensaje($entrada);
+
+        // Guardar mensaje
+        $chat = $this->Chats->newEntity([
+            'entrada' => $entrada,
+            'respuesta' => $respuesta,
+            'hora_entrada' => date('Y-m-d H:i:s'),
+            'id_user' => $userId
+        ]);
+
+        if ($this->Chats->save($chat)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'mensaje' => 'Error al guardar el mensaje']);
+        }
+
+        return $this->response->withType('application/json');
+    }
+    public function obtenerMensajes()
+    {
+        $this->request->allowMethod(['ajax', 'get']);
+        $userId = $this->request->getSession()->read('Auth.User.id');
+
+        $chats = $this->Chats->find('all', [
+            'conditions' => ['id_user' => $userId],
+            'order' => ['hora_entrada' => 'ASC']
+        ]);
+        $this->set(compact('chats'));
+        $this->render('chat_mensajes', 'ajax');
+    }
 }

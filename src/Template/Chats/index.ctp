@@ -3,337 +3,449 @@
         <div class="card">
             <div class="card-body">
                 <!-- En la sección de chat-box -->
-                <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;">
-                    <!-- Mostrar mensajes anteriores -->
-                    <?php if (!empty($chats) && $chats->count() > 0): ?>
-                        <?php foreach ($chats as $chat): ?>
-                            <div class="message user-message m-3">
-                                <div class="d-flex justify-content-end">
-                                    <div class="bg-primary text-white p-3 rounded-3">
-                                        <strong><?= $this->request->getSession()->read('Auth.User.nombre')?>:</strong> <?= h($chat->entrada) ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="message bot-message mb-3">
-                                <div class="d-flex justify-content-start">
-                                    <div class="border
-                                     p-3 rounded-3">
-                                        <strong>BrainMed:</strong> <?= h($chat->respuesta) ?>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                            <div class="message bot-message mb-3">
-                                <div class="d-flex justify-content-start">
-                                    <div class="bg-light p-3 rounded-3">
-                                        <strong>BrainMed:</strong> Hola, ¿en qué puedo ayudarte?
-                                    </div>
-                                </div>
-                            </div>
-                    <?php endif; ?>
+                <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;">    
                 </div>
-
-                <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'class' => 'd-flex flex-column']) ?>
-    <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.25rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
-    <div class="input-group">
-        <input type="hidden" name="entrada" id="entrada-hidden" required>
-
-        <!-- Menú de síntomas con intensidades -->
-        <div class="dropdown ms-2">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="symptomDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                Seleccionar síntomas
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="symptomDropdown">
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Fiebre</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Tos</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dolor de cabeza</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_cabeza" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_cabeza" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_cabeza" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dolor muscular</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_muscular" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_muscular" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_muscular" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dolor de garganta</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_garganta" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_garganta" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_garganta" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Estornudos</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="estornudos" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="estornudos" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="estornudos" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Náuseas</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="nauseas" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="nauseas" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="nauseas" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Congestión nasal</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="congestion_nasal" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="congestion_nasal" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="congestion_nasal" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Apatía</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="apatia" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="apatia" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="apatia" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Comezón</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="comezon" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="comezon" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="comezon" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Diarrea</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="diarrea" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="diarrea" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="diarrea" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dificultad respiratoria</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dificultad_respiratoria" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dificultad_respiratoria" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dificultad_respiratoria" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dolor abdominal</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_abdominal" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_abdominal" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_abdominal" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dolor de ojos</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_ojos" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_ojos" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_ojos" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dolor en pecho</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_en_pecho" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_en_pecho" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_en_pecho" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Dolor facial</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_facial" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_facial" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_facial" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Enrojecimiento</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="enrojecimiento" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="enrojecimiento" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="enrojecimiento" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Erupción cutánea</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="erupcion_cutanea" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="erupcion_cutanea" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="erupcion_cutanea" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Escalofríos</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="escalofrios" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="escalofrios" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="escalofrios" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Fatiga</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Falta de concentración</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="falta_de_concentracion" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="falta_de_concentracion" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="falta_de_concentracion" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Fotosensibilidad</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fotosensibilidad" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fotosensibilidad" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="fotosensibilidad" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Lagrimeo</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="lagrimeo" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="lagrimeo" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="lagrimeo" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Malestar</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Malestar general</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar_general" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar_general" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar_general" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Mialgias</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="mialgias" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="mialgias" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="mialgias" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Ojos llorosos</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="ojos_llorosos" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="ojos_llorosos" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="ojos_llorosos" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Pérdida de apetito</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_apetito" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_apetito" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_apetito" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Pérdida del olfato</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_del_olfato" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_del_olfato" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_del_olfato" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Secreción</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="secrecion" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="secrecion" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="secrecion" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Somnolencia</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="somnolencia" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="somnolencia" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="somnolencia" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Sudoración</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="sudoracion" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="sudoracion" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="sudoracion" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Vómito</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="vomito" data-intensity="baja">Baja</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="vomito" data-intensity="media">Media</a></li>
-                        <li><a class="dropdown-item intensity-option" href="#" data-symptom="vomito" data-intensity="alta">Alta</a></li>
-                    </ul>
-                </li>
-                <!-- Agrega más síntomas aquí si lo deseas -->
-            </ul>
-        </div>
-
-        <!-- Menú de estaciones -->
-        <div class="dropdown ms-2">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="seasonDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                Seleccionar estación
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="seasonDropdown">
-                <li><a class="dropdown-item season-option" href="#" data-season="invierno">Invierno</a></li>
-                <li><a class="dropdown-item season-option" href="#" data-season="otoño">Otoño</a></li>
-                <li><a class="dropdown-item season-option" href="#" data-season="primavera">Primavera</a></li>
-                <li><a class="dropdown-item season-option" href="#" data-season="verano">Verano</a></li>
-            </ul>
-        </div>
-
-        <button type="submit" class="btn btn-primary ms-2" id="submit-btn" disabled>Enviar</button>
-    </div>
-<?= $this->Form->end() ?>
-
+                <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'class' => 'd-flex flex-column', 'id' => 'form-chat']) ?>
+                <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.25rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
+                <div class="input-group">
+                    <input type="hidden" name="entrada" id="entrada-hidden" required>
+                    <!-- Menú de síntomas con intensidades -->
+                    <div class="dropdown ms-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="symptomDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seleccionar síntomas
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="symptomDropdown">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Fiebre</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fiebre" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Tos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="tos" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dolor de cabeza</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_cabeza" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_cabeza" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_cabeza" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dolor muscular</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_muscular" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_muscular" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_muscular" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dolor de garganta</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_garganta" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_garganta" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_garganta" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Estornudos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="estornudos" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="estornudos" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="estornudos" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Náuseas</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="nauseas" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="nauseas" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="nauseas" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Congestión nasal</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="congestion_nasal" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="congestion_nasal" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="congestion_nasal" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Apatía</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="apatia" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="apatia" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="apatia" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Comezón</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="comezon" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="comezon" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="comezon" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Diarrea</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="diarrea" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="diarrea" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="diarrea" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dificultad respiratoria</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dificultad_respiratoria" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dificultad_respiratoria" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dificultad_respiratoria" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dolor abdominal</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_abdominal" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_abdominal" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_abdominal" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dolor de ojos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_ojos" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_ojos" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_de_ojos" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dolor en pecho</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_en_pecho" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_en_pecho" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_en_pecho" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dolor facial</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_facial" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_facial" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="dolor_facial" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Enrojecimiento</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="enrojecimiento" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="enrojecimiento" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="enrojecimiento" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Erupción cutánea</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="erupcion_cutanea" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="erupcion_cutanea" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="erupcion_cutanea" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Escalofríos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="escalofrios" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="escalofrios" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="escalofrios" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Fatiga</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fatiga" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Falta de concentración</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="falta_de_concentracion" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="falta_de_concentracion" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="falta_de_concentracion" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Fotosensibilidad</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fotosensibilidad" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fotosensibilidad" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="fotosensibilidad" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Lagrimeo</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="lagrimeo" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="lagrimeo" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="lagrimeo" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Malestar</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Malestar general</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar_general" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar_general" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="malestar_general" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Mialgias</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="mialgias" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="mialgias" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="mialgias" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Ojos llorosos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="ojos_llorosos" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="ojos_llorosos" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="ojos_llorosos" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Pérdida de apetito</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_apetito" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_apetito" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_apetito" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Pérdida del olfato</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_del_olfato" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_del_olfato" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="perdida_del_olfato" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Secreción</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="secrecion" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="secrecion" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="secrecion" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Somnolencia</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="somnolencia" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="somnolencia" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="somnolencia" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Sudoración</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="sudoracion" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="sudoracion" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="sudoracion" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Vómito</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="vomito" data-intensity="baja">Baja</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="vomito" data-intensity="media">Media</a></li>
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="vomito" data-intensity="alta">Alta</a></li>
+                                </ul>
+                            </li>
+                            <!-- Agrega más síntomas aquí si lo deseas -->
+                        </ul>
+                    </div>
+                    <!-- Menú de estaciones -->
+                    <div class="dropdown ms-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="seasonDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seleccionar estación
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="seasonDropdown">
+                            <li><a class="dropdown-item season-option" href="#" data-season="invierno">Invierno</a></li>
+                            <li><a class="dropdown-item season-option" href="#" data-season="otoño">Otoño</a></li>
+                            <li><a class="dropdown-item season-option" href="#" data-season="primavera">Primavera</a></li>
+                            <li><a class="dropdown-item season-option" href="#" data-season="verano">Verano</a></li>
+                        </ul>
+                    </div>
+                    <button type="submit" class="btn btn-primary ms-2" id="submit-btn" disabled>Enviar</button>
+                </div>
+                <?= $this->Form->end() ?>
             </div>
         </div>
     </div>
     <?= $this->Html->script('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js') ?>
+</body>
+
+<style>
+    .dropdown-submenu {
+        position: relative;
+    }
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: 0.1rem;
+        margin-right: 0.1rem;
+        display: none;
+        position: absolute;
+    }
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    }
+    /* Animación de carga */
+    .loading-animation {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+    }
+    
+    .loading-dot {
+        width: 8px;
+        height: 8px;
+        margin: 0 3px;
+        border-radius: 50%;
+        background-color: #007bff;
+        animation: bounce 1.4s infinite ease-in-out both;
+    }
+    
+    .loading-dot:nth-child(1) {
+        animation-delay: -0.32s;
+    }
+    
+    .loading-dot:nth-child(2) {
+        animation-delay: -0.16s;
+    }
+    
+    @keyframes bounce {
+        0%, 80%, 100% {
+            transform: scale(0);
+        }
+        40% {
+            transform: scale(1);
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Función para mostrar la animación de carga
+        function showLoadingAnimation() {
+            const chatBox = document.querySelector('.chat-box');
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'loading-animation';
+            loadingDiv.innerHTML = `
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            `;
+            loadingDiv.id = 'loading-animation';
+            chatBox.appendChild(loadingDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        // Función para ocultar la animación de carga
+        function hideLoadingAnimation() {
+            const loadingDiv = document.getElementById('loading-animation');
+            if (loadingDiv) {
+                loadingDiv.remove();
+            }
+        }
+        
+        // Función para añadir la clase de animación a los nuevos mensajes
+        function animateNewMessage(messageElement) {
+            messageElement.classList.add('message-new');
+            // Eliminar la clase después de que termine la animación para evitar problemas con futuras animaciones
+            setTimeout(() => {
+                messageElement.classList.remove('message-new');
+            }, 500);
+        }
+        
+        // Capturar el envío del formulario
+        const chatForm = document.getElementById('form-chat');
+        if (chatForm) {
+            chatForm.addEventListener('submit', function(e) {
+                // Mostrar animación de carga cuando se envía el mensaje
+                showLoadingAnimation();
+                
+                // Aquí puedes agregar código para enviar el formulario mediante AJAX si lo deseas
+                // Si usas el envío normal del formulario, la animación desaparecerá cuando se recargue la página
+            });
+        }
+        
+        // Ejemplo de cómo aplicar la animación a mensajes recibidos mediante AJAX
+        // Si estás usando AJAX para cargar mensajes, puedes usar algo como esto:
+        /*
+        function cargarMensajesAjax() {
+            showLoadingAnimation();
+            
+            fetch('/ruta/para/obtener/mensajes')
+                .then(response => response.json())
+                .then(data => {
+                    hideLoadingAnimation();
+                    
+                    // Agregar los nuevos mensajes al chat
+                    data.mensajes.forEach(mensaje => {
+                        const mensajeElement = crearElementoMensaje(mensaje);
+                        document.querySelector('.chat-box').appendChild(mensajeElement);
+                        animateNewMessage(mensajeElement);
+                    });
+                    
+                    // Desplazar hacia abajo para mostrar los nuevos mensajes
+                    const chatBox = document.querySelector('.chat-box');
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                })
+                .catch(error => {
+                    hideLoadingAnimation();
+                    console.error('Error al cargar mensajes:', error);
+                });
+        }
+        
+        // Función para crear un elemento de mensaje
+        function crearElementoMensaje(mensaje) {
+            const div = document.createElement('div');
+            div.className = 'message ' + (mensaje.esUsuario ? 'user-message' : 'ai-message');
+            div.innerHTML = `
+                <div class="message-content">
+                    <p>${mensaje.texto}</p>
+                    <small class="text-muted">${mensaje.hora}</small>
+                </div>
+            `;
+            return div;
+        }
+        */
+        
+        // Si tienes mensajes que se cargan al iniciar la página, puedes animarlos así:
+        document.querySelectorAll('.chat-box .message').forEach(function(message) {
+            animateNewMessage(message);
+        });
+    });
+</script>
 </body>
 <style>
 .dropdown-submenu {
@@ -475,6 +587,46 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.getElementById('form-chat').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const jsonData = {};
+    formData.forEach((v, k) => jsonData[k] = v);
+
+    fetch('<?= $this->Url->build(["controller" => "Chats", "action" => "ajaxResponder"]) ?>', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrfToken"]').getAttribute('content')
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('form-chat').reset();
+            cargarMensajes();
+        } else {
+            alert(data.mensaje || "Ocurrió un error");
+        }
+    });
+});
+
+function cargarMensajes() {
+    fetch('<?= $this->Url->build(["controller" => "Chats", "action" => "obtenerMensajes"]) ?>')
+        .then(res => res.text())
+        .then(html => {
+            document.querySelector('.chat-box').innerHTML = html;
+            const box = document.querySelector('.chat-box');
+            box.scrollTop = box.scrollHeight;
+        });
+}
+
+// Opcional: recarga periódica automática
+setInterval(cargarMensajes, 5000); // cada 5 segundos
+
+
 </script>
 
 </html>

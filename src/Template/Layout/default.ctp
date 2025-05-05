@@ -21,6 +21,7 @@ $cakeDescription = $this->fetch('title');
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?= $this->Html->meta('csrfToken', $this->request->getParam('_csrfToken')); ?>
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
@@ -35,9 +36,9 @@ $cakeDescription = $this->fetch('title');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+    <?debug('csrfToken')?>  
     <?= $this->element('navbar')?>
     <?= $this->Flash->render() ?>
-    
     <div class="container-fluid mt-3">
         <?= $this->fetch('content') ?>
     </div>

@@ -5,7 +5,6 @@ use App\Controller\AppController;
 
 class UsersController extends AppController
 {
-    
     public function index()
     {
         $users = $this->paginate($this->Users);
@@ -13,6 +12,7 @@ class UsersController extends AppController
     }
     public function login()
     {
+        debug($this->request->getPath());
         if($this->Auth->user()) { /* CONTROLADOR DESDE AUTH REDIRIGE AL INDEX EN LA RUTA LOGIN */
             return $this->redirect(['controller' => 'Panel', 'action' => 'index']);
         }
