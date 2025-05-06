@@ -17,7 +17,7 @@ class ChatsController extends AppController
         $userId = $this->Auth->user('id');
         $chats = $this->Chats->find('all', [
             'conditions' => ['id_user' => $userId],
-            'order' => ['hora_entrada' => 'ASC']
+            'order' => ['date' => 'ASC']
         ]);
         if ($this->request->is('post')) {
             // Obtener la entrada del usuario
@@ -29,7 +29,8 @@ class ChatsController extends AppController
             $chat = $this->Chats->newEntity([
                 'entrada' => $entrada,
                 'respuesta' => $respuesta,
-                'hora_entrada' => date('Y-m-d H:i:s'),
+                'hora_entrada' => date('H:i:s'),
+                'date' => date('Y-m-d'),
                 'id_user' => $userId
             ]);
             // Guardar el chat en la base de datos
@@ -56,10 +57,10 @@ class ChatsController extends AppController
         $chat = $this->Chats->newEntity([
             'entrada' => $entrada,
             'respuesta' => $respuesta,
-            'hora_entrada' => date('Y-m-d H:i:s'),
+            'hora_entrada' => date('H:i:s'),
+            'date' => date('Y-m-d'),
             'id_user' => $userId
         ]);
-
         if ($this->Chats->save($chat)) {
             echo json_encode(['success' => true]);
         } else {
@@ -75,7 +76,7 @@ class ChatsController extends AppController
 
         $chats = $this->Chats->find('all', [
             'conditions' => ['id_user' => $userId],
-            'order' => ['hora_entrada' => 'ASC']
+            'order' => ['date' => 'ASC', 'hora_entrada' => 'ASC']
         ]);
         $this->set(compact('chats'));
         $this->render('chat_mensajes', 'ajax');

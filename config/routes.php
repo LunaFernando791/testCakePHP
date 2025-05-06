@@ -58,6 +58,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
     $routes->connect('/add', ['controller' => 'Users', 'action' => 'add']);
+    $routes->connect('/obtenerMensajes', ['controller' => 'Chats', 'action' => 'obtenerMensajes']);
     /*
      * ...and connect the rest of 'Pages' controller's URLs.
      */

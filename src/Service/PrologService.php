@@ -23,8 +23,8 @@ class PrologService
         }
         $sintomasCadena = implode(', ', $sintomasValidos);
         $prologPath = 'C:\\Program Files\\swipl\\bin\\swipl.exe';
-        //$archivoProlog = 'C:\\Users\\CTA-WEB-01\\Documents\\brainMed.pl';
-        $archivoProlog = 'C:\\Users\\garci\OneDrive\\Documentos\\Universidad\\8voSemestre\\SEMSBC\\brainMed.pl';
+        $archivoProlog = 'C:\\Users\\CTA-WEB-01\\Documents\\brainMed.pl';
+        //$archivoProlog = 'C:\\Users\\garci\OneDrive\\Documentos\\Universidad\\8voSemestre\\SEMSBC\\brainMed.pl';
         if (!file_exists($prologPath)) {
             return "Error: No se encontró el ejecutable de SWI-Prolog en la ruta especificada.";
         }
@@ -42,8 +42,8 @@ class PrologService
         }, $sintomas);
         $sintomasLista = "[" . implode(', ', $sintomasFormateados) . "]";
         $comando = "\"{$prologPath}\" -s \"{$archivoProlog}\" -g \"(parse_sintomas_entrada({$sintomasLista}, SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, '{$estacion}') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl.\" -t halt";
-        //file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', $comando . PHP_EOL, FILE_APPEND);
-        file_put_contents('C:\\xampp2\\htdocs\\testProject\\prolog_debug.log',  $comando .  PHP_EOL, FILE_APPEND);
+        file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', $comando . PHP_EOL, FILE_APPEND);
+        //file_put_contents('C:\\xampp2\\htdocs\\testProject\\prolog_debug.log',  $comando .  PHP_EOL, FILE_APPEND);
 
         $salida = null;
         $codigo = null;
@@ -56,15 +56,15 @@ class PrologService
         $enfermedad = "'". strtolower(trim($enfermedad)). "'";
 
         $comando2 = "\"{$prologPath}\" -s \"{$archivoProlog}\" -g \"(tratamientode({$enfermedad}, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl.\" -t halt";
-        //file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', $comando2 . PHP_EOL, FILE_APPEND);
-        file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', $comando2 . PHP_EOL, FILE_APPEND);
+        file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', $comando2 . PHP_EOL, FILE_APPEND);
+        //file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', $comando2 . PHP_EOL, FILE_APPEND);
         $salida2 = null;
         $codigo2 = null;
         exec($comando2, $salida2, $codigo2);
-       // file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', "Código: {$codigo}, Salida: " . print_r($salida, true) . PHP_EOL, FILE_APPEND);
-        file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', "Código: {$codigo}, Salida: ". print_r($salida, true). PHP_EOL, FILE_APPEND);
-        //file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', "Código: {$codigo2}, Salida: " . print_r($salida2, true) . PHP_EOL, FILE_APPEND);
-        file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', "Código: {$codigo2}, Salida: ". print_r($salida2, true). PHP_EOL, FILE_APPEND);
+        file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', "Código: {$codigo}, Salida: " . print_r($salida, true) . PHP_EOL, FILE_APPEND);
+        //file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', "Código: {$codigo}, Salida: ". print_r($salida, true). PHP_EOL, FILE_APPEND);
+        file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', "Código: {$codigo2}, Salida: " . print_r($salida2, true) . PHP_EOL, FILE_APPEND);
+        //file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', "Código: {$codigo2}, Salida: ". print_r($salida2, true). PHP_EOL, FILE_APPEND);
         if ($codigo !== 0 || $codigo2 !== 0) {
             return "Lo siento, ocurrió un error al procesar tu mensaje.";
         }

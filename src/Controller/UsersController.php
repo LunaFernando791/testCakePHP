@@ -12,9 +12,6 @@ class UsersController extends AppController
     }
     public function login()
     {
-        $this->request->getSession()->write('test', 'ok');
-        debug($this->request->getSession()->read('test'));
-
         if($this->Auth->user()) { /* CONTROLADOR DESDE AUTH REDIRIGE AL INDEX EN LA RUTA LOGIN */
             return $this->redirect(['controller' => 'Panel', 'action' => 'index']);
         }

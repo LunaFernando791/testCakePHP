@@ -3,8 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <!-- En la sección de chat-box -->
-                <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;">    
-                </div>
+                <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;"></div>
                 <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'class' => 'd-flex flex-column', 'id' => 'form-chat']) ?>
                 <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.25rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
                 <div class="input-group">
@@ -301,8 +300,6 @@
         </div>
     </div>
     <?= $this->Html->script('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js') ?>
-</body>
-
 <style>
     .dropdown-submenu {
         position: relative;
@@ -324,7 +321,6 @@
         justify-content: center;
         margin: 10px 0;
     }
-    
     .loading-dot {
         width: 8px;
         height: 8px;
@@ -392,54 +388,10 @@
             chatForm.addEventListener('submit', function(e) {
                 // Mostrar animación de carga cuando se envía el mensaje
                 showLoadingAnimation();
-                
                 // Aquí puedes agregar código para enviar el formulario mediante AJAX si lo deseas
                 // Si usas el envío normal del formulario, la animación desaparecerá cuando se recargue la página
             });
         }
-        
-        // Ejemplo de cómo aplicar la animación a mensajes recibidos mediante AJAX
-        // Si estás usando AJAX para cargar mensajes, puedes usar algo como esto:
-        /*
-        function cargarMensajesAjax() {
-            showLoadingAnimation();
-            
-            fetch('/ruta/para/obtener/mensajes')
-                .then(response => response.json())
-                .then(data => {
-                    hideLoadingAnimation();
-                    
-                    // Agregar los nuevos mensajes al chat
-                    data.mensajes.forEach(mensaje => {
-                        const mensajeElement = crearElementoMensaje(mensaje);
-                        document.querySelector('.chat-box').appendChild(mensajeElement);
-                        animateNewMessage(mensajeElement);
-                    });
-                    
-                    // Desplazar hacia abajo para mostrar los nuevos mensajes
-                    const chatBox = document.querySelector('.chat-box');
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                })
-                .catch(error => {
-                    hideLoadingAnimation();
-                    console.error('Error al cargar mensajes:', error);
-                });
-        }
-        
-        // Función para crear un elemento de mensaje
-        function crearElementoMensaje(mensaje) {
-            const div = document.createElement('div');
-            div.className = 'message ' + (mensaje.esUsuario ? 'user-message' : 'ai-message');
-            div.innerHTML = `
-                <div class="message-content">
-                    <p>${mensaje.texto}</p>
-                    <small class="text-muted">${mensaje.hora}</small>
-                </div>
-            `;
-            return div;
-        }
-        */
-        
         // Si tienes mensajes que se cargan al iniciar la página, puedes animarlos así:
         document.querySelectorAll('.chat-box .message').forEach(function(message) {
             animateNewMessage(message);
@@ -481,7 +433,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const seasonString = selectedSeason ? `${selectedSeason}` : '';
         hiddenInput.value = symptomsString + (symptomsString && seasonString ? ', ' : '') + seasonString;
         submitBtn.disabled = !hiddenInput.value.trim();
-        
+        //No agregar sintomas repetidos
+        if (selectedSymptoms.length > 0) {
+            const uniqueSymptoms = [...new Set(selectedSymptoms)];
+            selectedSymptoms = uniqueSymptoms;
+        }
         // Actualizar el texto del botón de estación si hay una estación seleccionada
         if (selectedSeason) {
             seasonDropdown.textContent = `Estación: ${selectedSeason}`;
@@ -510,13 +466,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
             const text = document.createElement('span');
             text.textContent = symptom;
-    
             const removeBtn = document.createElement('span');
             removeBtn.innerHTML = '&times;';
             removeBtn.style.cursor = 'pointer';
             removeBtn.style.fontWeight = 'bold';
             removeBtn.style.marginLeft = '5px';
-    
             removeBtn.addEventListener('click', function () {
                 selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
                 renderSymptomTags();
@@ -566,7 +520,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const symptom = this.getAttribute('data-symptom');
             const intensity = this.getAttribute('data-intensity');
             const fullSymptom = `${symptom} ${intensity}`;
-
             if (!selectedSymptoms.includes(fullSymptom)) {
                 selectedSymptoms.push(fullSymptom);
                 renderSymptomTags();
@@ -586,14 +539,12 @@ document.addEventListener("DOMContentLoaded", function () {
             updateHiddenInput();
         });
     });
-});
+
 document.getElementById('form-chat').addEventListener('submit', function(e) {
     e.preventDefault();
-
     const formData = new FormData(this);
     const jsonData = {};
     formData.forEach((v, k) => jsonData[k] = v);
-
     fetch('<?= $this->Url->build(["controller" => "Chats", "action" => "ajaxResponder"]) ?>', {
         method: 'POST',
         headers: {
@@ -605,7 +556,21 @@ document.getElementById('form-chat').addEventListener('submit', function(e) {
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            document.getElementById('form-chat').reset();
+            // Limpiar los síntomas seleccionados
+            document.querySelector('.selected-symptoms').innerHTML = null;
+            // Limpiar el campo oculto
+            document.getElementById('entrada-hidden').value = null;
+            // Deshabilitar el botón de enviar
+            document.getElementById('submit-btn').disabled = true;
+            // Limpiar el campo oculto
+            document.getElementById('entrada-hidden').value = null
+            // Si tienes una variable global selectedSymptoms, reiniciarla
+            if (typeof selectedSymptoms !== 'undefined') {
+                selectedSymptoms = [];
+                selectedSeason = ''; // Opcional: reiniciar la estación si la tienes en la variable global
+                renderSymptomTags();
+                updateHiddenInput();
+            }
             cargarMensajes();
         } else {
             alert(data.mensaje || "Ocurrió un error");
@@ -622,13 +587,10 @@ function cargarMensajes() {
             box.scrollTop = box.scrollHeight;
         });
 }
-
 // Opcional: recarga periódica automática
 setInterval(cargarMensajes, 5000); // cada 5 segundos
-
-
+});
 </script>
-
 </html>
 
 
