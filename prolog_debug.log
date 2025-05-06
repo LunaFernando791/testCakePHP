@@ -1215,3 +1215,4 @@ Código: 0, Salida: Array
     [0] => Para tu enfermedad, te recomiendo: [reposo en casa,hidratacion constante,analgesicos(paracetamol, ibuprofeno)]
 )
 
+"C:\Program Files\swipl\bin\swipl.exe" -s "C:\Users\garci\OneDrive\Documentos\Universidad\8voSemestre\SEMSBC\brainMed.pl" -g "(parse_sintomas_entrada(['fiebre alta', 'tos media', 'dolor_de_cabeza media'], SintomasFormateados), diagnostico(SintomasFormateados, Enfermedad, 'invierno') -> write('Basado en tus sintomas y la estacion en la que te encuentras, podrias tener: '), write(Enfermedad) ; write('No puedo determinar una enfermedad con esos síntomas.')), nl." -t halt

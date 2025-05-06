@@ -11,13 +11,6 @@ use App\Controller\AppController;
  */
 class ChatsController extends AppController
 {
-    public function beforeFilter(\Cake\Event\EventInterface $event)
-    {
-        parent::beforeFilter($event);
-
-        // Activa CSRF solo para las acciones del controlador Chats
-        $this->getEventManager()->on($this->Csrf);
-    }
     public function index()
     {
         // Obtener todos los chats del usuario actual

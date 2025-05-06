@@ -21,6 +21,8 @@ use Cake\Http\BaseApplication;
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use Cake\Http\Middleware\BodyParserMiddleware;
+
 
 /**
  * Application setup class.
@@ -62,28 +64,15 @@ class Application extends BaseApplication
     public function middleware($middlewareQueue)
 {
     $middlewareQueue
-        // Catch any exceptions in the lower layers,
-        // and make an error page/response
-        ->add(new ErrorHandlerMiddleware(null, Configure::read('Error')))
-        // Handle plugin/theme assets like CakePHP normally does.
+        ->add(new ErrorHandlerMiddleware(null, Configure::read('Error')))       // Manejo de errores primero
         ->add(new AssetMiddleware([
             'cacheTime' => Configure::read('Asset.cacheTime'),
-        ]))
+        ]))                   // Archivos estáticos
+        ->add(new RoutingMiddleware($this))            // Routing para determinar controladores
+        ->add(new BodyParserMiddleware())              // ← FALTA en tu código actual
         ->add(new CsrfProtectionMiddleware([
             'httponly' => true,
-            'exempt' => [
-                'login',
-                'add'
-            ]
-        ]))
-
-        // Add routing middleware.
-        // If you have a large number of routes connected, turning on routes
-        // caching in production could improve performance. For that when
-        // creating the middleware instance specify the cache config name by
-        // using it's second constructor argument:
-        // `new RoutingMiddleware($this, '_cake_routes_')`
-        ->add(new RoutingMiddleware($this));
+        ]));
 
     return $middlewareQueue;
 }

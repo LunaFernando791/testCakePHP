@@ -399,6 +399,12 @@ return [
      * To use database sessions, load the SQL file located at config/schema/sessions.sql
      */
     'Session' => [
+        'cookie' => 'CAKEPHP',
         'defaults' => 'php',
+        'timeout' => 1440,
+        'ini' => [
+            'session.cookie_secure' => false,
+            'session.cookie_httponly' => 1,
+        ],
     ],
 ];

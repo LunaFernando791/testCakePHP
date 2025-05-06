@@ -40,11 +40,10 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-        $this->loadComponent('Csrf');
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth',[
-            'authorize' => ['Controller'], 
+            'authorize' => ['Controller'],
             'loginRedirect' => [
                 'controller' => 'Users',
                 'action' => 'index'
@@ -64,20 +63,20 @@ class AppController extends Controller
                 ],
             'unauthorizedRedirect' => $this->referer()
         ]);
-        
+
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
     }
-    
+
     public function beforeFilter(Event $event) // Añadir esta función para establecer la variable 'authUser' en todas las vistas
     {
         $this->set('authUser', $this->Auth->user());
         $this->Auth->allow(['login', 'add']);
     }
-    
+
    public function isAuthorized($user) // Añadir esta función para la autorización, que comprueba si el usuario tiene permisos para acceder a una acción
     {
         // Todos los usuarios pueden acceder a las acciones 'index' y 'view'

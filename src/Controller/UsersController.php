@@ -12,7 +12,9 @@ class UsersController extends AppController
     }
     public function login()
     {
-        debug($this->request->getPath());
+        $this->request->getSession()->write('test', 'ok');
+        debug($this->request->getSession()->read('test'));
+
         if($this->Auth->user()) { /* CONTROLADOR DESDE AUTH REDIRIGE AL INDEX EN LA RUTA LOGIN */
             return $this->redirect(['controller' => 'Panel', 'action' => 'index']);
         }
@@ -52,7 +54,7 @@ class UsersController extends AppController
     }
     public function edit($id = null)
     {
-        
+
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
