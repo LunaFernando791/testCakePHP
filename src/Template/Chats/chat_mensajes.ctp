@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-start">
                 <div class="border
                  p-3 rounded-3">
-                    <strong>BrainMed:</strong> <?= h($chat->respuesta) ?>
+                    <strong>BrainMed:</strong> <?=nl2br( h($chat->respuesta)) ?>
                 </div>
             </div>
         </div>

@@ -9,7 +9,6 @@ class PrologService
         $arraySintomas = array_map('trim', explode(',', $entrada));
         $sintomasValidos = [];
         $estacion = null;
-
             foreach ($arraySintomas as $sintoma) {
                 if (in_array(strtolower($sintoma), $estaciones)) {
                     $estacion = strtolower($sintoma);
@@ -17,7 +16,6 @@ class PrologService
                     $sintomasValidos[] = $sintoma;
                 }
             }
-
         if (count($sintomasValidos) <3) {
             return "Se requieren al menos 3 síntomas para poder ayudarte.";
         }
@@ -61,16 +59,27 @@ class PrologService
         $salida2 = null;
         $codigo2 = null;
         exec($comando2, $salida2, $codigo2);
+        $salida2 = str_replace(['[', ']'], '', $salida2);
+        $comando3 = "\"{$prologPath}\" -s \"{$archivoProlog}\" -g \"(parse_sintomas_entrada({$sintomasLista}, SintomasFormateados),advertencia_urgencias(SintomasFormateados)), nl.\" -t halt";
+        file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', $comando3. PHP_EOL, FILE_APPEND);
+        //file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', $comando3. PHP_EOL, FILE_APPEND);
+        $salida3 = null;
+        $codigo3 = null;
+        exec($comando3, $salida3, $codigo3);
+
         file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', "Código: {$codigo}, Salida: " . print_r($salida, true) . PHP_EOL, FILE_APPEND);
         //file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', "Código: {$codigo}, Salida: ". print_r($salida, true). PHP_EOL, FILE_APPEND);
         file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', "Código: {$codigo2}, Salida: " . print_r($salida2, true) . PHP_EOL, FILE_APPEND);
         //file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', "Código: {$codigo2}, Salida: ". print_r($salida2, true). PHP_EOL, FILE_APPEND);
+        file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', "Código: {$codigo3}, Salida: ". print_r($salida3, true). PHP_EOL, FILE_APPEND);
+        //file_put_contents('C:\\xampp\\htdocs\\testProject\\prolog_debug.log', "Código: {$codigo3}, Salida: ". print_r($salida3, true). PHP_EOL, FILE_APPEND);
         if ($codigo !== 0 || $codigo2 !== 0) {
             return "Lo siento, ocurrió un error al procesar tu mensaje.";
         }
         $respuesta = $salida[0] ?? "No se obtuvo respuesta.";
         $respuesta2 = $salida2[0] ?? "No se obtuvo respuesta.";
-        return $respuesta . ".\n " . $respuesta2;
+        $respuesta3 = $salida3[0]?? "Sin síntomas graves.";
+        return $respuesta . ".\n" . $respuesta2 . ".\n" . $respuesta3;
     }
     private function extraerSintomas($entrada)
     {

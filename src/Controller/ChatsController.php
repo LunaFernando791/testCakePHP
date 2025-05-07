@@ -52,7 +52,8 @@ class ChatsController extends AppController
         // Procesar con Prolog
         $prologService = new PrologService();
         $respuesta = $prologService->procesarMensaje($entrada);
-
+        $entrada = str_replace("_", " ", $entrada);
+        $entrada = 'Mis síntomas son: '. $entrada; 
         // Guardar mensaje
         $chat = $this->Chats->newEntity([
             'entrada' => $entrada,
@@ -66,14 +67,12 @@ class ChatsController extends AppController
         } else {
             echo json_encode(['success' => false, 'mensaje' => 'Error al guardar el mensaje']);
         }
-
         return $this->response->withType('application/json');
     }
     public function obtenerMensajes()
     {
         $this->request->allowMethod(['ajax', 'get']);
         $userId = $this->request->getSession()->read('Auth.User.id');
-
         $chats = $this->Chats->find('all', [
             'conditions' => ['id_user' => $userId],
             'order' => ['date' => 'ASC', 'hora_entrada' => 'ASC']

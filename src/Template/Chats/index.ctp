@@ -5,7 +5,7 @@
                 <!-- En la sección de chat-box -->
                 <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;"></div>
                 <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'class' => 'd-flex flex-column', 'id' => 'form-chat']) ?>
-                <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.25rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
+                <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.50rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;"></div>
                 <div class="input-group">
                     <input type="hidden" name="entrada" id="entrada-hidden" required>
                     <!-- Menú de síntomas con intensidades -->
@@ -278,6 +278,12 @@
                                     <li><a class="dropdown-item intensity-option" href="#" data-symptom="vomito" data-intensity="alta">Alta</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Hemorragia</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item intensity-option" href="#" data-symptom="hemorragia" data-intensity="baja">Baja</a></li>
+                                </ul>
+                            </li>
                             <!-- Agrega más síntomas aquí si lo deseas -->
                         </ul>
                     </div>
@@ -299,22 +305,45 @@
             </div>
         </div>
     </div>
-    <?= $this->Html->script('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js') ?>
 <style>
-    .dropdown-submenu {
-        position: relative;
+    ul,ol{
+        list-style: none;
     }
-    .dropdown-submenu > .dropdown-menu {
-        top: 0;
-        left: 100%;
-        margin-left: 0.1rem;
-        margin-right: 0.1rem;
+    .dropdown-menu{
+        max-width: 400px;
+    overflow-y: auto;
+    max-height: 300px;
+    }
+    .dropdown-menu li a{
+        width: 200px;
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 15px;
+        padding: 10px;
+        transition: all 500ms ease;
+        border-radius: 5px;
+        
+    }
+    .dropdown-menu li a:hover{
+        background:rgba(48, 48, 48, 0.68);
+        color: #007bff;
+        transition: all 500ms ease;
+    }
+    .dropdown-menu > li{
+        float: left;
+    }
+    .dropdown-menu  li  ul{
         display: none;
         position: absolute;
+        min-width: 140px;
+
     }
-    .dropdown-submenu:hover > .dropdown-menu {
+    .dropdown-menu  li:hover > ul{
         display: block;
     }
+
     /* Animación de carga */
     .loading-animation {
         display: flex;
@@ -410,6 +439,7 @@
     margin-right: 0.1rem;
     display: none;
     position: absolute;
+    
 }
 .dropdown-submenu:hover > .dropdown-menu {
     display: block;
@@ -555,7 +585,9 @@ document.getElementById('form-chat').addEventListener('submit', function(e) {
     })
     .then(res => res.json())
     .then(data => {
-        if (data.success) {
+        if (!data.success) 
+            alert(data.mensaje || "Ocurrió un error");
+        else{
             // Limpiar los síntomas seleccionados
             document.querySelector('.selected-symptoms').innerHTML = null;
             // Limpiar el campo oculto
@@ -572,10 +604,9 @@ document.getElementById('form-chat').addEventListener('submit', function(e) {
                 updateHiddenInput();
             }
             cargarMensajes();
-        } else {
-            alert(data.mensaje || "Ocurrió un error");
         }
     });
+    
 });
 
 function cargarMensajes() {
