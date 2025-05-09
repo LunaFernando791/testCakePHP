@@ -3,19 +3,9 @@ namespace App\Service;
 
 class PrologService
 {
-    public function procesarMensaje($entrada)
+    public function procesarMensaje($entrada, $session)
     {
-        $estaciones = ['primavera', 'verano', 'otonio', 'invierno'];
-        $arraySintomas = array_map('trim', explode(',', $entrada));
-        $sintomasValidos = [];
-        $estacion = null;
-            foreach ($arraySintomas as $sintoma) {
-                if (in_array(strtolower($sintoma), $estaciones)) {
-                    $estacion = strtolower($sintoma);
-                } else {
-                    $sintomasValidos[] = $sintoma;
-                }
-            }
+        [$sintomasValidos, $estacion] = $this->foundSeason($entrada);
         if (count($sintomasValidos) <3) {
             return "Se requieren al menos 3 síntomas para poder ayudarte.";
         }
@@ -48,10 +38,12 @@ class PrologService
         exec($comando, $salida, $codigo);
         if (preg_match('/podrias tener: (.*)/', $salida[0] ?? '', $matches)) {
             $enfermedad = $matches[1];
+            $session->write('enfermedad', $enfermedad);
         } else {
             return "No he podido identificar síntomas en tu mensaje. Por favor, selecciona algunos síntomas para que pueda ayudarte.";
         }
         $enfermedad = "'". strtolower(trim($enfermedad)). "'";
+        
 
         $comando2 = "\"{$prologPath}\" -s \"{$archivoProlog}\" -g \"(tratamientode({$enfermedad}, Tratamiento) -> write('Para tu enfermedad, te recomiendo: '), write(Tratamiento) ; write('No puedo proporcionar un tratamiento para esa enfermedad.')), nl.\" -t halt";
         file_put_contents('C:\\xampp\\htdocs\\testProject\\testCakePHP\\prolog_debug.log', $comando2 . PHP_EOL, FILE_APPEND);
@@ -90,5 +82,20 @@ class PrologService
             $sintomas = [trim($entrada)];
         }
         return $sintomas;
+    }
+    public function foundSeason($entrada)
+    {
+        $estaciones = ['primavera', 'verano', 'otonio', 'invierno'];
+        $arraySintomas = array_map('trim', explode(',', $entrada));
+        $sintomasValidos = [];
+        $estacion = null;
+            foreach ($arraySintomas as $sintoma) {
+                if (in_array(strtolower($sintoma), $estaciones)) {
+                    $estacion = strtolower($sintoma);
+                } else {
+                    $sintomasValidos[] = $sintoma;
+                }
+            }
+        return [$sintomasValidos, $estacion];
     }
 }

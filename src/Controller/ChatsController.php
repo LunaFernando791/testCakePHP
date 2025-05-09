@@ -24,7 +24,8 @@ class ChatsController extends AppController
             $entrada = $this->request->getData('entrada');
             // Llamar a Prolog para procesar la entrada y obtener la respuesta
             $prologService = new PrologService();
-            $respuesta = $prologService->procesarMensaje($entrada);
+            $session = $this->request->getSession();
+            $respuesta = $prologService->procesarMensaje($entrada, $session);
             // Crear una nueva entidad de chat
             $chat = $this->Chats->newEntity([
                 'entrada' => $entrada,
@@ -45,15 +46,17 @@ class ChatsController extends AppController
     {
         $this->request->allowMethod(['ajax', 'post']);
         $this->autoRender = false;
-
         $userId = $this->request->getSession()->read('Auth.User.id');
         $entrada = $this->request->getData('entrada');
 
         // Procesar con Prolog
         $prologService = new PrologService();
-        $respuesta = $prologService->procesarMensaje($entrada);
-        $entrada = str_replace("_", " ", $entrada);
-        $entrada = 'Mis síntomas son: '. $entrada; 
+        $session = $this->request->getSession();
+        $respuesta = $prologService->procesarMensaje($entrada, $session);
+        [$validSintoms, $season] = $prologService->foundSeason($entrada);
+        $validSintoms = implode(', ', $validSintoms);
+        $validSintoms = str_replace('_', ' ', $validSintoms);
+        $entrada = 'Mis síntomas son: '. $validSintoms. ' y la estacion en la que me encuentro es: '. $season;
         // Guardar mensaje
         $chat = $this->Chats->newEntity([
             'entrada' => $entrada,
