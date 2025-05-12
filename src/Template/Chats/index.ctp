@@ -6,7 +6,7 @@
                 <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;"></div>
                 <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'class' => 'd-flex flex-column', 'id' => 'form-chat']) ?>
                 <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.50rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;">
-                    Ingresa tus síntomas aquí: 
+                    Ingresa tus síntomas aquí:
                 </div>
                 <div class="input-group">
                     <input type="hidden" name="entrada" id="entrada-hidden" required>
@@ -312,6 +312,7 @@
         const csrfToken = <?= json_encode($this->request->getAttribute('csrfToken')) ?>;
         const ajaxResponderUrl = <?= json_encode($this->Url->build(["controller" => "Chats", "action" => "ajaxResponder"])) ?>;
         const cargarMensajesUrl ='<?= $this->Url->build(["controller" => "Chats", "action" => "obtenerMensajes"]) ?>';
+        const mostrarEspecialistaUrl = '<?= $this->Url->build([ 'controller' => 'Chats', 'action' => 'mostrarEspecialista'])?>';
     </script>
     <?= $this->Html->script('chatForm') ?> <!-- Get the JS document to import and send the form. -->
 </body>

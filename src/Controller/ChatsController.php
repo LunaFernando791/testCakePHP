@@ -19,6 +19,7 @@ class ChatsController extends AppController
             'conditions' => ['id_user' => $userId],
             'order' => ['date' => 'ASC']
         ]);
+        $this->request->getSession()->write('Diagnostico.mostrarEspecialista', false);
         if ($this->request->is('post')) {
             // Obtener la entrada del usuario
             $entrada = $this->request->getData('entrada');
@@ -44,11 +45,11 @@ class ChatsController extends AppController
     }
     public function ajaxResponder()
     {
+        $this->request->getSession()->write('Diagnostico.mostrarEspecialista', false);
         $this->request->allowMethod(['ajax', 'post']);
         $this->autoRender = false;
         $userId = $this->request->getSession()->read('Auth.User.id');
         $entrada = $this->request->getData('entrada');
-
         // Procesar con Prolog
         $prologService = new PrologService();
         $session = $this->request->getSession();
@@ -82,5 +83,95 @@ class ChatsController extends AppController
         ]);
         $this->set(compact('chats'));
         $this->render('chat_mensajes', 'ajax');
+    }
+
+    public function mostrarEspecialista()
+    {
+        $this->request->allowMethod(['ajax', 'post']);
+        $this->autoRender = false;
+        $respuestaForm = $this->request->getData('respuesta');
+        $userId = $this->request->getSession()->read('Auth.User.id');
+        $session = $this->request->getSession();
+        $response = ['success' => false, 'mensaje' => 'Error en el proceso'];
+
+        if ($respuestaForm === 'si') {
+            $prologService = new PrologService();
+            $prologAnswer = trim($prologService->getSpecialist($session));
+
+            // Primer mensaje
+            $chat = $this->Chats->newEntity([
+                'entrada' => "¿Deseas saber a qué médico acudir?",
+                'respuesta' => "Si",
+                'hora_entrada' => date('H:i:s'),
+                'date' => date('Y-m-d'),
+                'id_user' => $userId
+            ]);
+
+            if ($this->Chats->save($chat)) {
+                // Segundo mensaje con la respuesta del especialista
+                $prologAnswer = 'El especialista que te recomiendo es: '. $prologAnswer;
+                $chat = $this->Chats->newEntity([
+                    'entrada'=> 'a',
+                    'respuesta' => $prologAnswer,
+                    'hora_entrada' => date('H:i:s'),
+                    'date' => date('Y-m-d'),
+                    'id_user' => $userId
+                ]);
+
+                if ($this->Chats->save($chat)) {
+                    echo json_encode([
+                       'success' => true,
+                       'mensaje' => 'Mensajes guardados correctamente',
+                        'actualizar' => true
+                    ]);
+                } else {
+                    echo json_encode([
+                       'success' => false,
+                       'mensaje' => 'Error al guardar el mensaje',
+                        'actualizar' => false
+                    ]);
+                }
+            } else {
+                echo json_encode([
+                  'success' => false,
+                  'mensaje' => 'Error al guardar el mensaje previo',
+                'actualizar' => false
+                ]);
+            }
+        } else {
+            // Primer mensaje para respuesta negativa
+            $chat = $this->Chats->newEntity([
+                'entrada' => "¿Deseas saber a qué médico acudir?",
+                'respuesta' => "No",
+                'hora_entrada' => date('H:i:s'),
+                'date' => date('Y-m-d'),
+                'id_user' => $userId
+            ]);
+
+            if ($this->Chats->save($chat)) {
+                // Segundo mensaje
+                $prologAnswer = 'Hola, necesitas ayuda?';
+                $chat = $this->Chats->newEntity([
+                    'entrada'=> '',
+                    'respuesta' => $prologAnswer,
+                    'hora_entrada' => date('H:i:s'),
+                    'date' => date('Y-m-d'),
+                    'id_user' => $userId
+                ]);
+
+                if ($this->Chats->save($chat)) {
+                    $response = [
+                        'success' => true,
+                        'mensaje' => 'Mensajes guardados correctamente',
+                        'actualizar' => true
+                    ];
+                } else {
+                    $response['mensaje'] = 'Error al guardar el mensaje';
+                }
+            } else {
+                $response['mensaje'] = 'Error al guardar el mensaje previo';
+            }
+        }
+        return $this->response->withType('application/json');
     }
 }

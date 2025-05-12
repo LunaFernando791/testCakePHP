@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderSymptomTags() {
         selectedSymptomsContainer.innerHTML = '';
-    
+
         // Renderizar síntomas
         selectedSymptoms.forEach(symptom => {
             const tag = document.createElement('div');
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tag.style.display = 'flex';
             tag.style.alignItems = 'center';
             tag.style.gap = '5px';
-    
+
             const text = document.createElement('span');
             text.textContent = symptom;
             const removeBtn = document.createElement('span');
@@ -57,12 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 renderSymptomTags();
                 updateHiddenInput();
             });
-    
+
             tag.appendChild(text);
             tag.appendChild(removeBtn);
             selectedSymptomsContainer.appendChild(tag);
         });
-    
+
         // Renderizar estación si está seleccionada
         if (selectedSeason) {
             const tag = document.createElement('div');
@@ -73,22 +73,22 @@ document.addEventListener("DOMContentLoaded", function () {
             tag.style.display = 'flex';
             tag.style.alignItems = 'center';
             tag.style.gap = '5px';
-    
+
             const text = document.createElement('span');
             text.textContent = `${selectedSeason}`;
-    
+
             const removeBtn = document.createElement('span');
             removeBtn.innerHTML = '&times;';
             removeBtn.style.cursor = 'pointer';
             removeBtn.style.fontWeight = 'bold';
             removeBtn.style.marginLeft = '5px';
-    
+
             removeBtn.addEventListener('click', function () {
                 selectedSeason = '';
                 renderSymptomTags();
                 updateHiddenInput();
             });
-    
+
             tag.appendChild(text);
             tag.appendChild(removeBtn);
             selectedSymptomsContainer.appendChild(tag);
@@ -126,6 +126,10 @@ document.getElementById('form-chat').addEventListener('submit', function(e) {
     const formData = new FormData(this);
     const jsonData = {};
     formData.forEach((v, k) => jsonData[k] = v);
+
+    // Mostrar animación de carga
+    showLoadingAnimation();
+
     fetch(ajaxResponderUrl, {
         method: 'POST',
         headers: {
@@ -134,30 +138,37 @@ document.getElementById('form-chat').addEventListener('submit', function(e) {
         },
         body: JSON.stringify(jsonData)
     })
-    .then(res => res.json())
-    .then(data => {
-        if (!data.success) 
-            alert(data.mensaje || "Ocurrió un error");
-        else{
-            // Limpiar los síntomas seleccionados
-            document.querySelector('.selected-symptoms').innerHTML = null;
-            // Limpiar el campo oculto
-            document.getElementById('entrada-hidden').value = null;
-            // Deshabilitar el botón de enviar
-            document.getElementById('submit-btn').disabled = true;
-            // Limpiar el campo oculto
-            document.getElementById('entrada-hidden').value = null
-            // Si tienes una variable global selectedSymptoms, reiniciarla
-            if (typeof selectedSymptoms !== 'undefined') {
-                selectedSymptoms = [];
-                selectedSeason = ''; // Opcional: reiniciar la estación si la tienes en la variable global
-                renderSymptomTags();
-                updateHiddenInput();
-            }
-            cargarMensajes();
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Error en la respuesta del servidor');
         }
+        return res.json();
+    })
+    .then(data => {
+        hideLoadingAnimation();
+        if (!data.success) {
+            console.error(data.mensaje || "Ocurrió un error");
+            return;
+        }
+
+        // Limpiar la interfaz
+        document.querySelector('.selected-symptoms').innerHTML = '';
+        document.getElementById('entrada-hidden').value = '';
+        document.getElementById('submit-btn').disabled = true;
+
+        // Reiniciar variables globales
+        selectedSymptoms = [];
+        selectedSeason = '';
+        renderSymptomTags();
+        updateHiddenInput();
+
+        // Cargar mensajes actualizados
+        cargarMensajes();
+    })
+    .catch(error => {
+        hideLoadingAnimation();
+        console.error('Error:', error);
     });
-    
 });
 // Función para mostrar la animación de carga
 function showLoadingAnimation() {
@@ -211,8 +222,93 @@ document.querySelectorAll(".dropdown-submenu").forEach(submenu => {
         if (subMenu) subMenu.style.display = "none";
     });
 });
+cargarMensajes();
+document.getElementById('form-specialist').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const jsonData = {};
 
+    // Capturar el botón presionado
+    const clickedButton = document.activeElement;
 
-// Opcional: recarga periódica automática
-setInterval(cargarMensajes, 5000); // cada 5 segundos
+    // Obtener el valor de la respuesta ("si" o "no")
+    const respuesta = clickedButton.value;
+
+    // Mostrar animación de carga
+    showLoadingAnimation();
+
+    fetch(mostrarEspecialistaUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrfToken
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+        return res.json();
+    })
+    .then(data => {
+        if (!data.success) {
+            alert(data.mensaje || "Ocurrió un error");
+        }
+        // Cargar los mensajes actualizados
+        cargarMensajes();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error al comunicarse con el servidor');
+    })
+    .finally(() => {
+        // Ocultar animación de carga
+        hideLoadingAnimation();
+    });
 });
+});
+
+
+
+
+
+
+/*document.getElementById('form-chat').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const jsonData = {};
+    formData.forEach((v, k) => jsonData[k] = v);
+    fetch(ajaxResponderUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrfToken
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (!data.success)
+            alert(data.mensaje || "Ocurrió un error");
+        else{
+            // Limpiar los síntomas seleccionados
+            document.querySelector('.selected-symptoms').innerHTML = null;
+            // Limpiar el campo oculto
+            document.getElementById('entrada-hidden').value = null;
+            // Deshabilitar el botón de enviar
+            document.getElementById('submit-btn').disabled = true;
+            // Limpiar el campo oculto
+            document.getElementById('entrada-hidden').value = null
+            // Si tienes una variable global selectedSymptoms, reiniciarla
+            if (typeof selectedSymptoms !== 'undefined') {
+                selectedSymptoms = [];
+                selectedSeason = ''; // Opcional: reiniciar la estación si la tienes en la variable global
+                renderSymptomTags();
+                updateHiddenInput();
+            }
+            cargarMensajes();
+        }
+    });
+
+});*/
