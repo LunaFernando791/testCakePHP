@@ -45,6 +45,18 @@ $cakeDescription = $this->fetch('title');
         <?= $this->fetch('content') ?>
     </div>
     <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">&copy; <?= date('Y')?> BrainMed. All rights reserved.</p>
+                </div>
+                <div class="col-md-12">
+                    <p class="text-center">
+                        Este sistema no es garantía de diagnosticos correctos ni que sea preciso, es preferente consultar a un médico.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
     <?= $this->Html->script('darkmode') ?>
 </body>

@@ -28,10 +28,14 @@
         </div>
         <div class="d-flex justify-content-end">
                 <div class="bg-primary text-white p-3 rounded-3">
-                    <?= $this->Form->create(null, ['url'=> ['action' => 'mostrarEspecialista', 'id' => 'form-specialist']])?>
+                    <?= $this->Form->create(null, [
+                        'url'=> ['action' => 'mostrarEspecialista'],
+                        'id' => 'form-specialist'
+                    ])?>
                         <?= $this->Form->button('Sí', ['name' => 'respuesta','value' => 'si' ,'type' => 'submit', 'class' => 'btn btn-primary'])?>
                         <?= $this->Form->button('No', ['name' => 'respuesta','value' => 'no', 'type' =>'submit', 'class' => 'btn btn-secondary'])?>
                     <?= $this->Form->end()?>
+                    <?php $this->request->getSession()->write('Diagnostico.mostrarEspecialista', false);?>
                 </div>
             </div>
         </div>

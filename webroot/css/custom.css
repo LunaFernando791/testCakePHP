@@ -9,14 +9,13 @@ ul,ol{
 .dropdown-menu li a{
     width: 200px;
     display: block;
-    color: #fff;
     text-decoration: none;
     font-weight: 400;
     font-size: 15px;
     padding: 10px;
     transition: all 500ms ease;
     border-radius: 5px;
-    
+
 }
 .dropdown-menu li a:hover{
     background:rgba(48, 48, 48, 0.68);

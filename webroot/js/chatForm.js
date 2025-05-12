@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedSymptoms.forEach(symptom => {
             const tag = document.createElement('div');
             tag.className = 'symptom-tag';
-            tag.style.border = '1px solid #ced4da';
+            tag.style.border = '1px solidrgb(23, 121, 219)';
             tag.style.padding = '3px 8px';
             tag.style.borderRadius = '16px';
             tag.style.display = 'flex';
@@ -223,92 +223,85 @@ document.querySelectorAll(".dropdown-submenu").forEach(submenu => {
     });
 });
 cargarMensajes();
-document.getElementById('form-specialist').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const jsonData = {};
 
-    // Capturar el botón presionado
-    const clickedButton = document.activeElement;
+function bindSpecialistForm() {
+    const specialistForm = document.getElementById('form-specialist');
+    if (specialistForm) {
+        // Agregar un campo oculto para la respuesta
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'respuesta';
+        hiddenInput.id = 'respuesta-hidden';
+        specialistForm.appendChild(hiddenInput);
+        
+        // Capturar clics en los botones
+        specialistForm.querySelectorAll('button[type="submit"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Establecer el valor en el campo oculto
+                document.getElementById('respuesta-hidden').value = this.value;
+                
+                showLoadingAnimation();
+                
+                // Usar FormData para capturar todos los campos, incluido el CSRF token
+                const formData = new FormData(specialistForm);
+                const jsonData = {};
+                formData.forEach((v, k) => jsonData[k] = v);
+                
+                console.log('Datos enviados:', jsonData);
+                
+                fetch(mostrarEspecialistaUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(res => {
+                    console.log('Status de la respuesta:', res.status);
+                    if (!res.ok) {
+                        return res.text().then(text => {
+                            console.error('Respuesta del servidor:', text);
+                            throw new Error('Error en la respuesta del servidor');
+                        });
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    if (!data.success) {
+                        alert(data.mensaje || "Ocurrió un error");
+                    }
+                    cargarMensajes();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ocurrió un error al comunicarse con el servidor');
+                })
+                .finally(() => {
+                    hideLoadingAnimation();
+                });
+            });
+        });
+    }
+}
 
-    // Obtener el valor de la respuesta ("si" o "no")
-    const respuesta = clickedButton.value;
+// Llama a esta función después de cargar los mensajes
+function cargarMensajes() {
+    fetch(cargarMensajesUrl)
+        .then(res => res.text())
+        .then(html => {
+            document.querySelector('.chat-box').innerHTML = html;
+            const box = document.querySelector('.chat-box');
+            box.scrollTop = box.scrollHeight;
+            bindSpecialistForm(); // <-- Importante: vuelve a enlazar el evento
+        });
+}
+// Al cargar la página, enlaza el formulario si existe
+bindSpecialistForm();
 
-    // Mostrar animación de carga
-    showLoadingAnimation();
-
-    fetch(mostrarEspecialistaUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': csrfToken
-        },
-        body: JSON.stringify(jsonData)
-    })
-    .then(res => {
-        if (!res.ok) {
-            throw new Error('Error en la respuesta del servidor');
-        }
-        return res.json();
-    })
-    .then(data => {
-        if (!data.success) {
-            alert(data.mensaje || "Ocurrió un error");
-        }
-        // Cargar los mensajes actualizados
-        cargarMensajes();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Ocurrió un error al comunicarse con el servidor');
-    })
-    .finally(() => {
-        // Ocultar animación de carga
-        hideLoadingAnimation();
-    });
 });
-});
 
 
 
-
-
-
-/*document.getElementById('form-chat').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const jsonData = {};
-    formData.forEach((v, k) => jsonData[k] = v);
-    fetch(ajaxResponderUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': csrfToken
-        },
-        body: JSON.stringify(jsonData)
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (!data.success)
-            alert(data.mensaje || "Ocurrió un error");
-        else{
-            // Limpiar los síntomas seleccionados
-            document.querySelector('.selected-symptoms').innerHTML = null;
-            // Limpiar el campo oculto
-            document.getElementById('entrada-hidden').value = null;
-            // Deshabilitar el botón de enviar
-            document.getElementById('submit-btn').disabled = true;
-            // Limpiar el campo oculto
-            document.getElementById('entrada-hidden').value = null
-            // Si tienes una variable global selectedSymptoms, reiniciarla
-            if (typeof selectedSymptoms !== 'undefined') {
-                selectedSymptoms = [];
-                selectedSeason = ''; // Opcional: reiniciar la estación si la tienes en la variable global
-                renderSymptomTags();
-                updateHiddenInput();
-            }
-            cargarMensajes();
-        }
-    });
-
-});*/

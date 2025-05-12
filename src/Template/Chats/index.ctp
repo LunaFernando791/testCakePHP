@@ -1,9 +1,9 @@
 <body>
-    <div class="container w-100">
-        <div class="card">
-            <div class="card-body">
+    <div class="container">
+        <div class="card m-3">
+            <div class="card-body m-3">
                 <!-- Chat box -->
-                <div class="chat-box mb-3" style="max-height: 450px; overflow-y: auto;"></div>
+                <div class="chat-box m-3 overflow-y-auto" style="height: 500px;"></div>
                 <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'class' => 'd-flex flex-column', 'id' => 'form-chat']) ?>
                 <div class="selected-symptoms mb-2" style="min-height: 40px; border: 1px solid #ced4da; border-radius: 0.50rem; padding: 5px; display: flex; flex-wrap: wrap; gap: 5px;">
                     Ingresa tus síntomas aquí:
